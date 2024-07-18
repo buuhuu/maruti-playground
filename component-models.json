@@ -285,7 +285,8 @@
         "label": "Alt Text"
       },
       {
-        "component": "text",
+        "component": "heading",
+        "headingType": "h3",
         "valueType": "string",
         "name": "heading",
         "value": "",
