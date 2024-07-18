@@ -1,10 +1,7 @@
 [
   {
     "id": "main",
-    "components": [
-      "section",
-      "loan-application-form"
-    ]
+    "components": ["section", "loan-application-form"]
   },
   {
     "id": "columns",
@@ -12,12 +9,7 @@
   },
   {
     "id": "column",
-    "components": [
-      "text",
-      "image",
-      "button",
-      "title"
-    ]
+    "components": ["text", "image", "button", "title"]
   },
   {
     "id": "section",
@@ -28,22 +20,20 @@
       "title",
       "hero",
       "cards",
-      "columns"
+      "columns",
+      "journey-carousel"
     ]
   },
   {
     "id": "cards",
-    "components": [
-      "card"
-    ]
+    "components": ["card"]
   },
   {
     "id": "loan-application-form",
-    "components": [
-      "text",
-      "image",
-      "button",
-      "title"
-    ]
+    "components": ["text", "image", "button", "title"]
+  },
+  {
+    "id": "journey-carousel",
+    "components": ["journey-carousel-item"]
   }
 ]
