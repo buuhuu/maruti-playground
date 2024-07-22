@@ -52,6 +52,19 @@
     "components": [
       "image"
     ]
+  },
+  {
+    "id": "accordion",
+    "components": [
+      "accordion-item"
+    ]
+  },
+  {
+    "id": "faq",
+    "components": [
+      "image-item",
+      "accordion-item"
+    ]
   }
 
 ]
