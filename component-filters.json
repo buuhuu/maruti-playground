@@ -29,7 +29,8 @@
       "hero",
       "cards",
       "columns",
-      "image-carousel"
+      "image-carousel",
+      "faq"
     ]
   },
   {
@@ -57,7 +58,7 @@
     "id": "faq",
     "components": [
       "image-item",
-      "accordion-item"
+      "faq-item"
     ]
   }
 

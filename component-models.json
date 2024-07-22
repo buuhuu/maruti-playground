@@ -268,20 +268,20 @@
     ]
   },
   {
-    "id": "accordion-item",
+    "id": "faq-item",
     "fields": [
       {
         "component": "text",
         "valueType": "string",
-        "name": "summary",
+        "name": "question",
         "value": "",
-        "label": "Summary"
+        "label": "Question"
       },
       {
         "component": "richtext",
-        "name": "text",
+        "name": "answer",
         "value": "",
-        "label": "Text",
+        "label": "Answer",
         "valueType": "string"
       }
     ]
