@@ -30,6 +30,8 @@
       "cards",
       "columns",
       "image-carousel",
+      "journey-carousel"
+      "image-carousel",
       "faq"
     ]
   },
@@ -52,6 +54,12 @@
     "id": "image-carousel",
     "components": [
       "image"
+    ]
+  },
+  {
+    "id": "journey-carousel",
+    "components": [
+      "journey-carousel-item"
     ]
   },
   {
