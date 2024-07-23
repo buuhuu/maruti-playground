@@ -57,7 +57,7 @@
   {
     "id": "faq",
     "components": [
-      "image-item",
+      "image",
       "faq-item"
     ]
   }
