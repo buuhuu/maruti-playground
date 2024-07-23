@@ -65,7 +65,7 @@
   {
     "id": "faq",
     "components": [
-      "image",
+      "image-slide",
       "faq-item"
     ]
   }
