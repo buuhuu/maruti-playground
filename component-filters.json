@@ -57,6 +57,7 @@
   {
     "id": "journey-carousel",
     "components": [
+      "image",
       "journey-carousel-item"
     ]
   }

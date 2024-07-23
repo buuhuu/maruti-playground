@@ -287,6 +287,19 @@
     ]
   },
   {
+    "id": "journey-carousel",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Background Image",
+        "multi": false,
+        "required": true
+      }
+    ]
+  },
+  {
     "id": "journey-carousel-item",
     "fields": [
       {
