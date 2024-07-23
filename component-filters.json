@@ -53,7 +53,7 @@
   {
     "id": "image-carousel",
     "components": [
-      "image"
+      "image-slide"
     ]
   },
   {
