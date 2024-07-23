@@ -292,7 +292,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "background-image",
+        "name": "common_background-image",
         "label": "Background Image",
         "multi": false,
         "required": true
@@ -300,7 +300,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "image",
+        "name": "common_image",
         "label": "Image",
         "multi": false,
         "required": true
@@ -308,7 +308,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageAlt",
+        "name": "common_imageAlt",
         "value": "Default alt",
         "label": "Alt Text",
         "required": true
@@ -316,21 +316,21 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "content_heading",
+        "name": "common_heading",
         "value": "",
         "label": "Heading",
         "required": true
       },
       {
         "component": "text",
-        "name": "content_headingType",
+        "name": "common_headingType",
         "value": "h3",
         "hidden": true
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "content_description",
+        "name": "common_description",
         "value": "",
         "label": "Description"
       }

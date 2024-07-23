@@ -212,7 +212,8 @@
                 "template": {
                   "name": "Journey Carousel",
                   "model": "journey-carousel",
-                  "filter": "journey-carousel"
+                  "filter": "journey-carousel",
+                  "common_headingType": "h3"
                 }
               }
             }
