@@ -245,6 +245,7 @@
                 "template": {
                   "name": "FAQ",
                   "faq_title": "Frequently asked questions",
+                  "model": "faq",
                   "filter": "faq"
                 }
               }
