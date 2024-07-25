@@ -1,3 +1,47 @@
-.block {
-    text-align: center;
+.image-carousel {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.image-container {
+    display: flex;
+    width: 100%;
+    transition: all 0.25s ease 0s;
+}
+
+.image-container > div {
+    min-width: 100%;
+}
+
+.image-container img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.dots-container {
+    display: flex;
+    column-gap: 10px;
+    justify-content: center;
+    margin: 25px 0;
+
+}
+
+.dot {
+    background: 0 0;
+    color: inherit;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    width: 59px;
+    height: 8px;
+    background-color: #C5C5C5;
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: black;
 }

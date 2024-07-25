@@ -219,6 +219,13 @@ main .section {
   }
 }
 
+@media (width >= 900px) {
+  .section > .image-carousel-wrapper {
+    max-width: 100%;
+  }
+}
+
+
 /* section metadata */
 main .section.light,
 main .section.highlight {
