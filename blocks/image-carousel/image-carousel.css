@@ -2,7 +2,6 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-
 }
 
 .image-container {
@@ -22,26 +21,25 @@
 
 .dots-container {
     display: flex;
-    column-gap: 10px;
+    column-gap: 0.62rem;
     justify-content: center;
-    margin: 25px 0;
-
+    margin: 1.56rem 0;
 }
 
 .dot {
     background: 0 0;
     color: inherit;
     border: none;
-    padding: 0 !important;
+    padding: 0;
     font: inherit;
-    width: 59px;
-    height: 8px;
-    background-color: #C5C5C5;
+    width: 3.5rem;
+    height: 0.5rem;
+    background-color: var(--tertiary-medium-grey);
     border-radius: 0;
     outline: none;
     cursor: pointer;
 }
 
 .dot.active {
-    background-color: black;
+    background-color: var( --tertiary-black);
 }
