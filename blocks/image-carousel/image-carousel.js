@@ -55,9 +55,9 @@ export default async function decorate(block) {
     dotsContainer.appendChild(dot);
   });
 
-  block.innerHTML = '';
-  block.appendChild(imageContainer);
-  block.appendChild(dotsContainer);
+  // block.innerHTML = '';
+  // block.appendChild(imageContainer);
+  // block.appendChild(dotsContainer);
 
   startCarousel(block, imageContainer, totalImages);
 }
