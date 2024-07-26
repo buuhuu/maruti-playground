@@ -51,8 +51,7 @@
   {
     "id": "image-slide",
     "components": [
-      "desktop-image",
-      "mobile-image"
+      "image"
     ]
   },
   {
