@@ -39,25 +39,25 @@ function startCarousel(carousel, imageContainer, totalImages) {
 }
 
 export default async function decorate(block) {
-  const imageContainer = document.createElement('div');
-  imageContainer.classList.add('image-container');
-  const dotsContainer = document.createElement('div');
-  dotsContainer.classList.add('dots-container');
-  const images = document.querySelectorAll('.image-carousel > div');
-  const totalImages = images.length;
-  images.forEach((imgDiv, index) => {
-    imageContainer.appendChild(imgDiv);
-    // Create dot for each image
-    const dot = document.createElement('span');
-    dot.classList.add('dot');
-    if (index === 0) dot.classList.add('active');
-
-    dotsContainer.appendChild(dot);
-  });
-
-  // block.innerHTML = '';
-  // block.appendChild(imageContainer);
-  // block.appendChild(dotsContainer);
-
-  startCarousel(block, imageContainer, totalImages);
+  // const imageContainer = document.createElement('div');
+  // imageContainer.classList.add('image-container');
+  // const dotsContainer = document.createElement('div');
+  // dotsContainer.classList.add('dots-container');
+  // const images = document.querySelectorAll('.image-carousel > div');
+  // const totalImages = images.length;
+  // images.forEach((imgDiv, index) => {
+  //   imageContainer.appendChild(imgDiv);
+  //   // Create dot for each image
+  //   const dot = document.createElement('span');
+  //   dot.classList.add('dot');
+  //   if (index === 0) dot.classList.add('active');
+  //
+  //   dotsContainer.appendChild(dot);
+  // });
+  //
+  // // block.innerHTML = '';
+  // // block.appendChild(imageContainer);
+  // // block.appendChild(dotsContainer);
+  //
+  // startCarousel(block, imageContainer, totalImages);
 }
