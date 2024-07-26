@@ -192,19 +192,25 @@
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/image/v1/image",
-                "template": {}
+                "template": {
+                  "name": "Desktop Image",
+                  "model": "desktop-image"
+                }
               }
             }
           }
         },
         {
-          "title": "Desktop Image",
+          "title": "Mobile Image",
           "id": "mobile-image",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/image/v1/image",
-                "template": {}
+                "template": {
+                  "name": "Mobile Image",
+                  "model": "mobile-image"
+                }
               }
             }
           }

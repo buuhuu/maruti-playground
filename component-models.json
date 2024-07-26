@@ -64,7 +64,7 @@
     ]
   },
   {
-    "id": "image-slide",
+    "id": "desktop-image",
     "fields": [
       {
         "component": "reference",
@@ -74,18 +74,23 @@
         "multi": false
       },
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image_mobile",
-        "label": "Image (mobile)",
-        "multi": false
-      },
-      {
         "component": "text",
         "valueType": "string",
         "name": "imageAlt",
         "value": "Default alt",
         "label": "Alt Text"
+      }
+    ]
+  },
+  {
+    "id": "mobile-image",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
       }
     ]
   },
