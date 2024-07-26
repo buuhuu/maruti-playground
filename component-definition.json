@@ -179,10 +179,7 @@
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
                   "name": "Image Slide",
-                  "model": "image-slide",
-                  "image": "/content/dam/aem-xwalk-test-harsh/content-at-scale.png",
-                  "image_mobile": "/content/dam/aem-xwalk-test-harsh/content-at-scale.png",
-                  "imageAlt": "Sample Image"
+                  "model": "image-slide"
                 }
               }
             }
