@@ -74,6 +74,13 @@
         "multi": false
       },
       {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image_mobile",
+        "label": "Image (mobile)",
+        "multi": false
+      },
+      {
         "component": "text",
         "valueType": "string",
         "name": "imageAlt",
