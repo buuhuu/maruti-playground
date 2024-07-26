@@ -49,6 +49,13 @@
     ]
   },
   {
+    "id": "image-slide",
+    "components": [
+      "desktop-image",
+      "mobile-image"
+    ]
+  },
+  {
     "id": "image-carousel",
     "components": [
       "image-slide"
