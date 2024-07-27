@@ -212,9 +212,7 @@
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
                   "name": "Image Carousel Item",
-                  "model": "image-carousel-item",
-                  "image": "/content/dam/aem-xwalk-test-harsh/content-at-scale.png",
-                  "imageAlt": "Sample Image"
+                  "model": "image-carousel-item"
                 }
               }
             }
