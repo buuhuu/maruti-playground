@@ -213,7 +213,8 @@
                 "template": {
                   "name": "Image Carousel Item",
                   "model": "image-carousel-item",
-                  "content_headingType": "h3"
+                  "image": "/content/dam/aem-xwalk-test-harsh/content-at-scale.png",
+                  "imageAlt": "Sample Image"
                 }
               }
             }
