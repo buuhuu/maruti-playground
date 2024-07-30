@@ -50,9 +50,9 @@
                 "template": {
                   "name": "Image Slide",
                   "model": "image-slide",
-                  "image": "/content/dam/aem-xwalk-test-harsh/content-at-scale.png",
+                  "image_desktop": "/content/dam/aem-xwalk-test-harsh/content-at-scale.png",
                   "image_mobile": "/content/dam/aem-xwalk-test-harsh/content-at-scale.png",
-                  "imageAlt": "Sample Image"
+                  "image_mobileAlt": "Sample Image Alt"
                 }
               }
             }
