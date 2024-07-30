@@ -69,8 +69,8 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "image",
-        "label": "Image",
+        "name": "image_desktop",
+        "label": "Image Desktop",
         "multi": false
       },
       {
@@ -83,7 +83,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageAlt",
+        "name": "image_mobileAlt",
         "value": "Default alt",
         "label": "Alt Text"
       }
