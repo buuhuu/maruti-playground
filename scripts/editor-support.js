@@ -134,4 +134,46 @@ function attachEventListners(main) {
   main?.addEventListener('aue:ui-select', handleSelection);
 }
 
+// listen for dynamic instrumetnation of images with art direction
+(function dynamicInstrumentation() {
+  const mediaQueries = {};
+  const setInstrumenation = (target, instr) => {
+    for (const [prop, value] of Object.entries(instr)) {
+      target.setAttribute(prop, value);
+    }
+  };
+  const handleEvent = () => {
+    for (const target of document.querySelectorAll('[data-dynamic-instrumentation]')) {
+      const dynInstr = JSON.parse(target.dataset.dynamicInstrumentation);
+      for (const [mediaQuery, instr] of Object.entries(dynInstr)) {
+        if (mediaQueries[mediaQuery]?.matches) {
+          setInstrumenation(target, instr);
+          break;
+        }
+        // apply default instrumenation if no media query matches
+        if (!mediaQuery) {
+          setInstrumenation(target, instr);
+        }
+      }
+    }
+  };
+
+  // observe elements with data-dynamic-instrumentation and create a MediaQueryList for each unique  media query
+  const dynInstrObserver = new MutationObserver((entries) => {
+    for (const { target } of entries) {
+      if (target.dataset.dynamicInstrumentation) {
+        const dynInstr = JSON.parse(target.dataset.dynamicInstrumentation);
+        for (const mediaQuery of Object.keys(dynInstr)) {
+          if (mediaQuery && !mediaQueries[mediaQuery]) {
+            mediaQueries[mediaQuery] = window.matchMedia(`(${mediaQuery})`);
+            mediaQueries[mediaQuery].addEventListener('change', handleEvent);
+          }
+        }
+      }
+    }
+    handleEvent();
+  });
+  dynInstrObserver.observe(document, { attributeFilter: ['data-dynamic-instrumentation'], subtree: true });
+})();
+
 attachEventListners(document.querySelector('main'));
