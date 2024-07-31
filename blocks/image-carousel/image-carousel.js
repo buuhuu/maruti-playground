@@ -1,4 +1,4 @@
-import { mergeImagesForArtDirection } from '../../scripts/scripts.js';
+import {mergeImagesForArtDirection} from "../../scripts/scripts.js";
 
 function startCarousel(carousel, imageContainer, totalImages) {
   const intervalTime = 2000; // Time in milliseconds
@@ -41,8 +41,6 @@ function startCarousel(carousel, imageContainer, totalImages) {
 }
 
 export default async function decorate(block) {
-  // console.log('inside');
-  // console.log(block.innerHTML);
   const imageContainer = document.createElement('div');
   imageContainer.classList.add('image-container');
   const dotsContainer = document.createElement('div');
@@ -51,16 +49,17 @@ export default async function decorate(block) {
 
   const totalImages = images.length;
   images.forEach((imgDiv, index) => {
+
     const pictureElements = imgDiv.querySelectorAll('picture');
     if (pictureElements.length >= 2) {
       // Extract the first <img> element (desktop image)
-      const imgDesktop = pictureElements[0].querySelector('img');
+      const imgDesktop = pictureElements[0].querySelector('img');;
       // Extract the second <img> element (mobile image)
-      const imgMobile = pictureElements[1].querySelector('img');
+      const imgMobile = pictureElements[1].querySelector('img');;
       mergeImagesForArtDirection(imgDesktop, imgMobile);
       // Do something with imgDesktop and imgMobile
-      // console.log('Desktop Image:', imgDesktop);
-      // console.log('Mobile Image:', imgMobile);
+      console.log('Desktop Image:', imgDesktop);
+      console.log('Mobile Image:', imgMobile);
     }
 
     imageContainer.appendChild(imgDiv);
