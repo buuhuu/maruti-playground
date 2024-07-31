@@ -411,7 +411,7 @@
       {
         "component": "text",
         "name": "faq_titleType",
-        "value": "h3",
+        "value": "h2",
         "hidden": true
       },
       {
@@ -428,6 +428,12 @@
         "name": "common_imageAlt",
         "value": "Default alt",
         "label": "Alt Text",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "ctas_submit",
+        "label": "View More Button",
         "required": true
       }
     ]
