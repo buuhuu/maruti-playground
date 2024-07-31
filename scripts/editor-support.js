@@ -8,7 +8,7 @@ import {
   loadBlocks,
 } from './aem.js';
 import { decorateRichtext } from './editor-support-rte.js';
-import { decorateMain } from './scripts.js';
+import { decorateMain, buildAutoBlocks } from './scripts.js';
 
 async function applyChanges(event) {
   // redecorate default content and blocks on patches (in the properties rail)
@@ -24,15 +24,6 @@ async function applyChanges(event) {
   if (!content) return false;
 
   const element = document.querySelector(`[data-aue-resource="${resource}"]`);
-
-  if (element && element.matches('.dynamic-block')) {
-    // dynamic blocks manage their updates themself, dispatch an event to it
-    // this is used to update the state of clientside rendered stateful applications like
-    // multi step forms
-    element.dispatchEvent(new CustomEvent('apply-update', { detail: content }));
-    return true;
-  }
-
   const parsedUpdate = new DOMParser().parseFromString(content, 'text/html');
 
   if (element) {
@@ -50,11 +41,24 @@ async function applyChanges(event) {
       return true;
     }
 
-    const block = element.parentElement?.closest('.block[data-aue-resource]') || element?.closest('.block[data-aue-resource]');
+    const block = element.parentElement?.closest('.block[data-aue-resource]')
+      || element?.closest('.block[data-aue-resource]')
+      || element?.closest('.dynamic-block[data-aue-resource]');
     if (block) {
       const blockResource = block.getAttribute('data-aue-resource');
       const newBlock = parsedUpdate.querySelector(`[data-aue-resource="${blockResource}"]`);
       if (newBlock) {
+        if (block.matches('.dynamic-block')) {
+          // dynamic blocks manage their updates themself, dispatch an event to it
+          // this is used to update the state of clientside rendered stateful applications like
+          // multi step forms
+          decorateButtons(newBlock);
+          decorateIcons(newBlock);
+          decorateBlock(newBlock);
+          decorateRichtext(newBlock);
+          element.dispatchEvent(new CustomEvent('apply-update', { detail: newBlock.outerHTML }));
+          return true;
+        }
         newBlock.style.display = 'none';
         block.insertAdjacentElement('afterend', newBlock);
         decorateButtons(newBlock);
@@ -77,6 +81,7 @@ async function applyChanges(event) {
           element.insertAdjacentElement('afterend', newSection);
           decorateButtons(newSection);
           decorateIcons(newSection);
+          buildAutoBlocks(parentElement);
           decorateRichtext(newSection);
           decorateSections(parentElement);
           decorateBlocks(parentElement);
