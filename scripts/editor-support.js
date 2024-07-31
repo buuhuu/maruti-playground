@@ -138,13 +138,16 @@ function attachEventListners(main) {
 (function dynamicInstrumentation() {
   const mediaQueries = {};
   const setInstrumenation = (target, instr) => {
+    // eslint-disable-next-line no-restricted-syntax
     for (const [prop, value] of Object.entries(instr)) {
       target.setAttribute(prop, value);
     }
   };
   const handleEvent = () => {
+    // eslint-disable-next-line no-restricted-syntax
     for (const target of document.querySelectorAll('[data-dynamic-instrumentation]')) {
       const dynInstr = JSON.parse(target.dataset.dynamicInstrumentation);
+      // eslint-disable-next-line no-restricted-syntax
       for (const [mediaQuery, instr] of Object.entries(dynInstr)) {
         if (mediaQueries[mediaQuery]?.matches) {
           setInstrumenation(target, instr);
@@ -158,11 +161,14 @@ function attachEventListners(main) {
     }
   };
 
-  // observe elements with data-dynamic-instrumentation and create a MediaQueryList for each unique  media query
+  // observe elements with data-dynamic-instrumentation and
+  // create a MediaQueryList for each unique  media query
   const dynInstrObserver = new MutationObserver((entries) => {
+    // eslint-disable-next-line no-restricted-syntax
     for (const { target } of entries) {
       if (target.dataset.dynamicInstrumentation) {
         const dynInstr = JSON.parse(target.dataset.dynamicInstrumentation);
+        // eslint-disable-next-line no-restricted-syntax
         for (const mediaQuery of Object.keys(dynInstr)) {
           if (mediaQuery && !mediaQueries[mediaQuery]) {
             mediaQueries[mediaQuery] = window.matchMedia(`(${mediaQuery})`);
@@ -174,6 +180,6 @@ function attachEventListners(main) {
     handleEvent();
   });
   dynInstrObserver.observe(document, { attributeFilter: ['data-dynamic-instrumentation'], subtree: true });
-})();
+}());
 
 attachEventListners(document.querySelector('main'));

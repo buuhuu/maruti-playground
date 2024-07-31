@@ -185,16 +185,19 @@ async function loadPage() {
 export function mergeImagesForArtDirection(img, imgMobile) {
   const removeInstrumentation = (of) => {
     const attributes = [...of.attributes].filter(
-        ({ nodeName }) => nodeName.startsWith('data-aue-') || nodeName.startsWith('data-richtext-'),
+      ({ nodeName }) => nodeName.startsWith('data-aue-') || nodeName.startsWith('data-richtext-'),
     );
     if (attributes.length) {
+      // eslint-disable-next-line no-restricted-syntax
       for (const { nodeName } of attributes) of.removeAttribute(nodeName);
+      // eslint-disable-next-line max-len
       return attributes.reduce((prev, { nodeName, nodeValue }) => ({ ...prev, [nodeName]: nodeValue }), {});
     }
     return null;
   };
   const applyDynamicInstrumentation = () => {
     const dynamicInstrumentation = {};
+    // eslint-disable-next-line no-restricted-syntax
     for (const entry of [[img, 'min-width: 600px'], [imgMobile]]) {
       const [element, mediaQuery = ''] = entry;
       const instrumentation = removeInstrumentation(element);
