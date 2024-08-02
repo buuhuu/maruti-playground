@@ -97,6 +97,7 @@ export default async function decorate(block, routes) {
         const { attrs: newAttrs, config: newConfig } = parseConfig(configBlock, routes[name]);
         setEditorState({ attrs: newAttrs, config: newConfig });
       }
+      debugger;
       ref.current.addEventListener('apply-update', handleContentUpdate);
       return () => ref.current.removeEventListener('apply-update', handleContentUpdate);
     }, [name]);
