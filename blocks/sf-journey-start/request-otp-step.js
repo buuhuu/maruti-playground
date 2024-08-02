@@ -6,13 +6,22 @@ import { hnodeAs, MultiStepFormContext } from './multi-step-form.js';
 
 function RequestOtpStep({ config }) {
   const { customerOption, dealerOption, description, button } = config;
-  const { updateFormState } = useContext(MultiStepFormContext);
+  const { updateFormState, handleSetActiveRoute } = useContext(MultiStepFormContext);
   const formRef = useRef();
 
   const handleOnSubmit = (e) => {
-    const formEntries = Object.fromEntries([...new FormData(formRef.current)]);
-    updateFormState((currentState) => ({ ...currentState, ...formEntries }));
     e.preventDefault();
+    const formEntries = Object.fromEntries([...new FormData(formRef.current)]);
+    const { 'mobile-number': mobileNumber } = formEntries;
+
+    // Update the form state with the mobile number
+    updateFormState((currentState) => ({
+      ...currentState,
+      mobileNumber,
+    }));
+
+    // Move to the next step
+    handleSetActiveRoute('restore-previous-journey-step');
   };
 
   return html`
@@ -31,7 +40,7 @@ function RequestOtpStep({ config }) {
         ${description}
       </div>
       <div class="request-otp-step-input">
-        <input type="text" placeholder="Mobile Number" />
+        <input type="text" name="mobile-number" placeholder="Mobile Number" />
         <button type="submit">
           ${hnodeAs(button, 'span')}
         </button>

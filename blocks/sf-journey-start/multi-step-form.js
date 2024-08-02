@@ -59,6 +59,7 @@ function parseConfig(block, Component) {
     config = Component.defaults;
   }
 
+  console.log('Parsed config:', config);
   return { attrs, config };
 }
 
@@ -70,6 +71,8 @@ export default async function decorate(block, routes) {
     const parsed = parseConfig(configBlock, Component);
     return { ...acc, [name]: parsed };
   }, {});
+
+  console.log(JSON.stringify(parsedRoutes));
 
   /**
    * A higher level component that wraps the given child into a <div> that is a dynamic-block.
@@ -109,7 +112,20 @@ export default async function decorate(block, routes) {
     const [firstRoute] = Object.keys(routes);
     const [activeRoute, setActiveRoute] = useState(firstRoute);
     const [formState, updateFormState] = useState({});
-    const context = { activeRoute, setActiveRoute, formState, updateFormState };
+
+    const handleSetActiveRoute = (newRoute) => {
+      if (newRoute && routes[newRoute] && newRoute !== activeRoute) {
+        setActiveRoute(newRoute);
+        block.dataset.activeRoute = newRoute;
+
+        // Update the URL without reloading the page
+        const url = new URL(window.location);
+        url.searchParams.set('step', newRoute);
+        window.history.pushState({}, '', url);
+      }
+    };
+    // eslint-disable-next-line no-use-before-define,max-len
+    const context = { activeRoute, setActiveRoute, formState, updateFormState, handleSetActiveRoute };
 
     // if loaded in an iframe (Universal Editor), render all routes
     block.dataset.renderAll = window.self !== window.top ? 'true' : '';
@@ -119,7 +135,8 @@ export default async function decorate(block, routes) {
     block.addEventListener('navigate-to-route', ({ detail }) => {
       const { route: newRoute } = detail;
       if (newRoute && routes[newRoute] && newRoute !== activeRoute) {
-        setActiveRoute(newRoute);
+        //        setActiveRoute(newRoute);
+        handleSetActiveRoute(newRoute);
         block.dataset.activeRoute = newRoute;
       }
     });
@@ -129,8 +146,26 @@ export default async function decorate(block, routes) {
       console.log(formState);
     }, [formState]);
 
+    useEffect(() => {
+      // eslint-disable-next-line no-unused-vars
+      function handlePopState(event) {
+        const urlParams = new URL(window.location).searchParams;
+        const step = urlParams.get('step');
+        if (step && routes[step]) {
+          setActiveRoute(step);
+        }
+      }
+
+      window.addEventListener('popstate', handlePopState);
+      return () => {
+        window.removeEventListener('popstate', handlePopState);
+      };
+    }, []);
+
     let formContent;
+    console.log(`block data renderAll ${block.dataset.renderAll}`);
     if (block.dataset.renderAll === 'true') {
+      debugger;
       // for authoring we have to render all the routes and show/hide them with CSS
       formContent = Object.entries(routes).map(([name, Component]) => {
         const { attrs, config } = parsedRoutes[name];
