@@ -107,6 +107,7 @@ function handleSelection(event) {
   const resource = detail?.resource;
 
   if (resource) {
+    debugger;
     const element = document.querySelector(`[data-aue-resource="${resource}"]`);
     const block = element.parentElement?.closest('.block') || element?.closest('.block');
 

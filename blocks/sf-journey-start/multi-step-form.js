@@ -125,6 +125,33 @@ export default async function decorate(block, routes) {
         window.history.pushState({}, '', url);
       }
     };
+
+    useEffect(() => {
+      const urlParams = new URL(window.location).searchParams;
+      const step = urlParams.get('step');
+
+      // Check if the URL has a step parameter
+      if (step && routes[step]) {
+        // If step exists in URL, check the form state
+        if (formState['mobileNumber']) {
+          // If mobile-number is set, load the step directly
+          setActiveRoute(step);
+        } else {
+          // If mobile-number is not set, load the first step
+          setActiveRoute(firstRoute);
+          const url = new URL(window.location);
+          url.searchParams.delete('step');
+          window.history.pushState({}, '', url);
+        }
+      } else {
+        // If no step in URL, load the first step
+        setActiveRoute(firstRoute);
+      }
+
+      // Cleanup function if needed
+      return () => {};
+    }, [firstRoute, formState]);
+
     // eslint-disable-next-line no-use-before-define,max-len
     const context = { activeRoute, setActiveRoute, formState, updateFormState, handleSetActiveRoute };
 
