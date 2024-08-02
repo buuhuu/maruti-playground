@@ -10,6 +10,22 @@ import {
 import { decorateRichtext } from './editor-support-rte.js';
 import { decorateMain, buildAutoBlocks } from './scripts.js';
 
+function getState(block) {
+  if (block.matches('.faq')) {
+    return [...block.querySelectorAll('details[open]')]
+        .map((details) => details.dataset.aueResource);
+  }
+  return null;
+}
+
+function setState(block, state) {
+  if (block.matches('.faq')) {
+    block.querySelectorAll('details').forEach((details) => {
+      details.open = state.includes(details.dataset.aueResource);
+    });
+  }
+}
+
 async function applyChanges(event) {
   // redecorate default content and blocks on patches (in the properties rail)
   const { detail } = event;
@@ -45,6 +61,7 @@ async function applyChanges(event) {
       || element?.closest('.block[data-aue-resource]')
       || element?.closest('.dynamic-block[data-aue-resource]');
     if (block) {
+      const state = getState(block);
       const blockResource = block.getAttribute('data-aue-resource');
       const newBlock = parsedUpdate.querySelector(`[data-aue-resource="${blockResource}"]`);
       if (newBlock) {
@@ -67,6 +84,7 @@ async function applyChanges(event) {
         decorateRichtext(newBlock);
         await loadBlock(newBlock);
         block.remove();
+        setState(newBlock, state);
         newBlock.style.display = null;
         return true;
       }
@@ -109,6 +127,15 @@ function handleSelection(event) {
   if (resource) {
     const element = document.querySelector(`[data-aue-resource="${resource}"]`);
     const block = element.parentElement?.closest('.block') || element?.closest('.block');
+
+    if (block && block.matches('.faq')) {
+      // close all details
+      block.querySelectorAll('details').forEach((details) => {
+        details.open = false;
+      });
+      const details = element.matches('details') ? element : element.querySelector('details');
+      details.open = true;
+    }
 
     if (block?.dataset.activeRoute) {
       // if the block does some routing we notify it about the new route based on the selection
