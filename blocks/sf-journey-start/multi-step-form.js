@@ -97,7 +97,6 @@ export default async function decorate(block, routes) {
         const { attrs: newAttrs, config: newConfig } = parseConfig(configBlock, routes[name]);
         setEditorState({ attrs: newAttrs, config: newConfig });
       }
-      debugger;
       ref.current.addEventListener('apply-update', handleContentUpdate);
       return () => ref.current.removeEventListener('apply-update', handleContentUpdate);
     }, [name]);
@@ -193,7 +192,6 @@ export default async function decorate(block, routes) {
     let formContent;
     console.log(`block data renderAll ${block.dataset.renderAll}`);
     if (block.dataset.renderAll === 'true') {
-      debugger;
       // for authoring we have to render all the routes and show/hide them with CSS
       formContent = Object.entries(routes).map(([name, Component]) => {
         const { attrs, config } = parsedRoutes[name];
