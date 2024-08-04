@@ -247,6 +247,8 @@ export default async function decorate(block, routes) {
         const step = urlParams.get('step');
         if (step && routes[step]) {
           setActiveRoute(step);
+        } else {
+          setActiveRoute(firstRoute);
         }
       }
 
