@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable import/no-unresolved */
-import { render, h, createContext, cloneElement } from '../../scripts/vendor/preact.js';
+import { render, h, createContext, cloneElement, Fragment } from '../../scripts/vendor/preact.js';
 import { useState, useRef, useEffect } from '../../scripts/vendor/preact-hooks.js';
 import { html } from '../../scripts/vendor/htm-preact.js';
 import { toClassName } from '../../scripts/aem.js';
@@ -11,8 +11,77 @@ export function hnodeAs(node, tagName, props = {}) {
   return copy;
 }
 
+function attributesToString(attrs) {
+  return Object.entries(attrs)
+    .filter(([key, value]) => key !== 'children' && value != null) // Exclude children and null values
+    .map(([key, value]) => `${key}="${value}"`)
+    .join(' ');
+}
+
 function getAttributes(element) {
   return Object.fromEntries([...element.attributes].map((attr) => [attr.name, attr.value]));
+}
+
+// Function to recursively convert Preact nodes to HTML string
+export function renderToString(node) {
+  if (node === null || node === undefined) {
+    return '';
+  }
+
+  if (typeof node === 'string') {
+    return node;
+  }
+
+  if (node.type === Fragment) {
+    return node.props.children.map(renderToString).join('');
+  }
+
+  const tagName = node.type.toLowerCase();
+  const attributes = attributesToString(node.props);
+
+  const children = node.props.children
+    ? node.props.children.map((child) => renderToString(child)).join('')
+    : '';
+
+  return `<${tagName}${attributes ? ` ${attributes}` : ''}>${children}</${tagName}>`;
+}
+
+export function htmlStringToPreactNode(htmlString) {
+  const domParser = new DOMParser();
+  const doc = domParser.parseFromString(htmlString, 'text/html');
+  function convert(node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      return node.nodeValue;
+    }
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      const children = [...node.childNodes].map(convert);
+      return h(node.nodeName.toLowerCase(), getAttributes(node), children);
+    }
+    return null;
+  }
+  return convert(doc.body);
+}
+
+/**
+ * Replaces a placeholder in a Preact node with a given value.
+ *
+ * @param {JSX.Element} node - The Preact node to be processed.
+ * @param {string} parameter - The placeholder parameter to replace, e.g., 'name'.
+ * @param {string} toReplaceWith - The value to replace the placeholder with.
+ * @returns {JSX.Element} - The updated Preact node with the replacement.
+ */
+export function replaceAndConvertNode(node, parameter, toReplaceWith) {
+  // Convert Preact node to HTML string
+  const htmlString = renderToString(node);
+
+  // Create a regex pattern for the placeholder
+  const pattern = new RegExp(`{{state\\.${parameter}}}`, 'g');
+
+  // Replace the placeholder with the given value
+  const updatedHtmlString = htmlString.replace(pattern, toReplaceWith);
+
+  // Convert updated HTML string back to Preact node
+  return htmlStringToPreactNode(updatedHtmlString);
 }
 
 function hnode(nodes) {
@@ -132,7 +201,7 @@ export default async function decorate(block, routes) {
       // Check if the URL has a step parameter
       if (step && routes[step]) {
         // If step exists in URL, check the form state
-        if (formState['mobileNumber']) {
+        if (formState.mobileNumber) {
           // If mobile-number is set, load the step directly
           setActiveRoute(step);
         } else {

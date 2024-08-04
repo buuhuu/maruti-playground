@@ -3,12 +3,16 @@
 
 import { html } from '../../scripts/vendor/htm-preact.js';
 import { useContext, useRef } from '../../scripts/vendor/preact-hooks.js';
-import { hnodeAs, MultiStepFormContext } from './multi-step-form.js';
+import {
+  hnodeAs, replaceAndConvertNode, MultiStepFormContext,
+} from './multi-step-form.js';
 
 function RestorePreviousJourenyStep({ config }) {
   const { description, yesButton, noButton } = config;
-  const { updateFormState, handleSetActiveRoute } = useContext(MultiStepFormContext);
+  const { updateFormState, handleSetActiveRoute, formState } = useContext(MultiStepFormContext);
   const formRef = useRef();
+
+  const updatedDescription = replaceAndConvertNode(hnodeAs(description, 'div'), 'name', formState.name);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +32,7 @@ function RestorePreviousJourenyStep({ config }) {
   return html`
      <form ref=${formRef} onsubmit=${(e) => handleOnSubmit(e)}>
       <div class="restore-previous-journey-step-description">
-        ${description}
+        ${hnodeAs(updatedDescription, 'div')}
       </div>
       <div class="restore-previous-journey-step-buttons">
         <button type="submit" name="yes-or-no" value="yes">
@@ -43,9 +47,9 @@ function RestorePreviousJourenyStep({ config }) {
 }
 
 RestorePreviousJourenyStep.parse = (block) => {
-  const [descriptionWrapper, buttonsWraper] = [...block.children]
+  const [description, buttonsWraper] = [...block.children]
     .map((row) => row.firstElementChild);
-  const [description] = [...descriptionWrapper.children];
+  // const description = descriptionWrapper;
   const [yesButton, noButton] = [...buttonsWraper.children];
   return { description, yesButton, noButton };
 };
