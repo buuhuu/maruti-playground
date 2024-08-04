@@ -209,6 +209,10 @@ main .section {
   padding: 64px 16px;
 }
 
+main .section.image-carousel-container {
+  padding: 0px 0px;
+}
+
 @media (width >= 600px) {
   main .section {
     padding: 64px 32px;

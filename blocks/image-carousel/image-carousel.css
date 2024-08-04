@@ -10,6 +10,10 @@
     transition: all 0.25s ease 0s;
 }
 
+.image-container p {
+    margin-bottom: 0px;
+}
+
 .image-container > div {
     min-width: 100%;
 }
@@ -23,7 +27,8 @@
     display: flex;
     column-gap: 0.62rem;
     justify-content: center;
-    margin: 1.56rem 0;
+    margin-top: 0px;
+    margin-bottom: 1.56rem;
 }
 
 .dot {
@@ -42,4 +47,10 @@
 
 .dot.active {
     background-color: var( --tertiary-black);
+}
+
+@media (width >= 1440px) {
+    .dots-container {
+        margin-top: 1.56rem;
+    }
 }
