@@ -11,10 +11,8 @@ function RequestOtpStep({ config }) {
   const [showError, setShowError] = useState(false);
 
   const isValidMobileNumber = (number) => {
-    // Example validation: check if the number is exactly 10 digits
-    // const phoneNumberPattern = /^\d{10}$/;
-    // return phoneNumberPattern.test(number);
-    return true;
+    const phoneNumberPattern = /^\d{10}$/;
+    return phoneNumberPattern.test(number);
   };
 
   const handleOnSubmit = async (e) => {

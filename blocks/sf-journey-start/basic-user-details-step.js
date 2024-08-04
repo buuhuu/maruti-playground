@@ -1,7 +1,7 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable import/no-unresolved */
 import { html } from '../../scripts/vendor/htm-preact.js';
-import {useContext, useRef, useState} from '../../scripts/vendor/preact-hooks.js';
+import { useContext, useRef, useState } from '../../scripts/vendor/preact-hooks.js';
 import { hnodeAs, MultiStepFormContext } from './multi-step-form.js';
 
 function BasicUserDetailsStep({ config }) {

@@ -141,8 +141,6 @@ export default async function decorate(block, routes) {
     return { ...acc, [name]: parsed };
   }, {});
 
-  console.log(JSON.stringify(parsedRoutes));
-
   /**
    * A higher level component that wraps the given child into a <div> that is a dynamic-block.
    * The dynamic-block receives updates in the editor from the editor-support script and can
