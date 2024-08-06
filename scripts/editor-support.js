@@ -13,7 +13,7 @@ import { decorateMain, buildAutoBlocks } from './scripts.js';
 function getState(block) {
   if (block.matches('.faq')) {
     return [...block.querySelectorAll('details[open]')]
-        .map((details) => details.dataset.aueResource);
+      .map((details) => details.dataset.aueResource);
   }
   return null;
 }

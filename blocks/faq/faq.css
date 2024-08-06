@@ -35,7 +35,7 @@
 
 .block.faq .faq-title h2 {
     font-size: var(--heading-font-size-m);
-    font-family: "Lato", sans-serif;
+    font-family: Lato, sans-serif;
     font-weight: 300;
     line-height: 1.75rem;
     color: #164b91;
@@ -59,7 +59,7 @@
     cursor: pointer;
     border-bottom: 10px;
     line-height: 1.4;
-    font-family: "Lato", sans-serif;
+    font-family: Lato, sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -79,7 +79,7 @@
     display: inline-block;
     width: 18px;
     height: 2px;
-    background: currentColor;
+    background: currentcolor;
     vertical-align: middle;
 }
 
@@ -89,9 +89,9 @@
     font-size: 16px;
     border-top: #acacac solid 1px;
     line-height: 1.4;
-    color: #000000;
+    color: #000;
     font-weight: 300;
-    font-family: "Lato", sans-serif;
+    font-family: Lato, sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -103,10 +103,10 @@
     background-color: #164b91;
     border-color: #164b91;
     text-decoration: none;
-    padding: 0 16px 0 16px;
+    padding: 0 16px;
     display: inline-block;
     font-size: 16px;
-    color: #FFFFFF;
+    color: #FFF;
     font-weight: 400;
     transition: 0.5s;
     text-transform: uppercase;
@@ -114,7 +114,6 @@
 }
 
 @media (width >= 768px) {
-    
     .block.faq .faq-content-left {
         width: 60%;
     }
