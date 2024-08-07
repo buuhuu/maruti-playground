@@ -129,12 +129,20 @@ function handleSelection(event) {
     const block = element.parentElement?.closest('.block') || element?.closest('.block');
 
     if (block && block.matches('.faq')) {
-      // close all details
-      block.querySelectorAll('details').forEach((details) => {
-        details.open = false;
-      });
-      const details = element.matches('details') ? element : element.querySelector('details');
-      details.open = true;
+      if (detail.prop === 'ctas_submit') {
+        const faqItems = document.querySelectorAll('.faq-item');
+        for (let i = 0; i < faqItems.length; i += 1) {
+          faqItems[i].style.display = 'block';
+        }
+        document.getElementById('viewMoreBtn').style.display = 'none';
+      } else {
+        // close all details
+        block.querySelectorAll('details').forEach((details) => {
+          details.open = false;
+        });
+        const details = element.matches('details') ? element : element.querySelector('details');
+        details.open = true;
+      }
     }
 
     if (block?.dataset.activeRoute) {

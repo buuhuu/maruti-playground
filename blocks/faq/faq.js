@@ -1,9 +1,10 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 function decorateButton(viewMoreButton) {
+  const maxVisibleQuestions = 4;
   const faqItems = document.querySelectorAll('.faq-item');
   // Hide the 'View More' button if there are less than 5 questions
-  if (faqItems.length < 5) {
+  if (faqItems.length < maxVisibleQuestions + 1) {
     viewMoreButton.style.display = 'none';
   } else {
     viewMoreButton.addEventListener('click', () => {
@@ -42,7 +43,7 @@ function addEventListenerToFaqItems(faq) {
 }
 
 function createFaqItems(block) {
-  const remainingDivs = Array.from(block.querySelectorAll('div:nth-child(n+4)'));
+  const remainingDivs = Array.from(block.querySelectorAll('div.faq-item'));
   const faqListWrapper = document.createElement('div');
   faqListWrapper.classList.add('faq-list');
 
@@ -64,6 +65,10 @@ function addClassesToElements(block) {
   block.children[1].classList.add('faq-picture');
   block.children[2].id = 'viewMoreBtn';
   block.children[2].classList.add('view-more-faq');
+  // Add faq-item class to all divs after the first 3
+  for (let i = 3; i < block.children.length; i += 1) {
+    block.children[i].classList.add('faq-item');
+  }
 }
 
 function appendElementsToBlock(block, faqListWrapper) {
