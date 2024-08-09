@@ -92,5 +92,5 @@ export default function decorate(block) {
   addClassesToElements(block);
   const faqListWrapper = createFaqItems(block);
   appendElementsToBlock(block, faqListWrapper);
-  decorateButton(block.children[0].children[2]);
+  decorateButton(block.querySelector('.view-more-faq'));
 }

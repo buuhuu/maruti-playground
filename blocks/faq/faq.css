@@ -14,10 +14,6 @@
     display: none;
 }
 
-.block.faq .faq-content-left, .faq-content-right {
-    float: left;
-}
-
 /* Style the faq-picture div */
 .block.faq .faq-picture {
     display: none;
@@ -25,7 +21,7 @@
 
 /* Style the faq-list div */
 .block.faq .faq-list {
-    margin-right: 10px;
+    margin-right: 0.625rem;
 }
 
 .block.faq .faq-title {
@@ -52,12 +48,12 @@
 .block.faq .faq-list .faq-item-label {
     font-size: var(--body-font-size-xs);
     color: #848484;
-    padding: 0.5rem 1.875rem 0.25rem 1.5rem;
+    padding: 0.5rem 3rem 0.25rem 1.5rem;
     font-weight: 300;
     position: relative;
     display: block;
     cursor: pointer;
-    border-bottom: 10px;
+    border-bottom: 0.625rem;
     line-height: 1.4;
     font-family: Lato, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -77,8 +73,8 @@
 .block.faq details[open] summary::after {
     content: "";
     display: inline-block;
-    width: 18px;
-    height: 2px;
+    width: 1.2rem;
+    height: 0.05rem;
     background: currentcolor;
     vertical-align: middle;
 }
@@ -86,7 +82,7 @@
 .block.faq .faq-list .faq-item-body {
     word-wrap: break-word;
     padding: 0.5rem 1.875rem 0.25rem 1.5rem;
-    font-size: 16px;
+    font-size: 1rem;
     border-top: #acacac solid 1px;
     line-height: 1.4;
     color: #000;
@@ -103,9 +99,9 @@
     background-color: #164b91;
     border-color: #164b91;
     text-decoration: none;
-    padding: 0 16px;
+    padding: 0 1rem;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1rem;
     color: #FFF;
     font-weight: 400;
     transition: 0.5s;
@@ -125,8 +121,7 @@
     
     .block.faq .faq-picture {
         display: block;
-        margin-bottom: 20px;
-        margin-left: 10px;
-        margin-top: 50px;
+        margin-left: 0.8rem;
+        margin-top: 3.15rem;
     }
 }
