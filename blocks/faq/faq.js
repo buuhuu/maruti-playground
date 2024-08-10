@@ -61,6 +61,7 @@ function createFaqItems(block) {
 }
 
 function addClassesToElements(block) {
+  block.classList.add('dynamic-block');
   block.children[0].classList.add('faq-title');
   block.children[1].classList.add('faq-picture');
   block.children[2].id = 'viewMoreBtn';
