@@ -19,11 +19,11 @@ function getState(block) {
 }
 
 function setState(block, state) {
-  if (block.matches('.faq')) {
-    block.querySelectorAll('details').forEach((details) => {
-      details.open = state.includes(details.dataset.aueResource);
-    });
-  }
+  // if (block.matches('.faq')) {
+  //   block.querySelectorAll('details').forEach((details) => {
+  //     details.open = state.includes(details.dataset.aueResource);
+  //   });
+  // }
 }
 
 async function applyChanges(event) {
