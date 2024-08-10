@@ -61,6 +61,7 @@ async function applyChanges(event) {
       || element?.closest('.block[data-aue-resource]')
       || element?.closest('.dynamic-block[data-aue-resource]');
     if (block) {
+      console.log(block.innerHTML);
       const state = getState(block);
       const blockResource = block.getAttribute('data-aue-resource');
       const newBlock = parsedUpdate.querySelector(`[data-aue-resource="${blockResource}"]`);
