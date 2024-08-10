@@ -56,7 +56,13 @@ async function applyChanges(event) {
           decorateIcons(newBlock);
           decorateBlock(newBlock);
           decorateRichtext(newBlock);
-          element.dispatchEvent(new CustomEvent('apply-update', { detail: newBlock.outerHTML }));
+          element.dispatchEvent(new CustomEvent('apply-update', {
+            detail: {
+              blockHtml: newBlock.outerHTML,
+              element,
+              content,
+            },
+          }));
           return true;
         }
         newBlock.style.display = 'none';

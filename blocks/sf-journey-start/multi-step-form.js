@@ -158,8 +158,8 @@ export default async function decorate(block, routes) {
     useEffect(() => {
       // listen for updates, parse them using the same function used in decorate() and update
       // the state accordingly
-      function handleContentUpdate({ detail: update }) {
-        const parsedUpdate = new DOMParser().parseFromString(update, 'text/html');
+      function handleContentUpdate({ detail: { blockHtml } }) {
+        const parsedUpdate = new DOMParser().parseFromString(blockHtml, 'text/html');
         const configBlock = parsedUpdate.querySelector(`.${name}`);
         const { attrs: newAttrs, config: newConfig } = parseConfig(configBlock, routes[name]);
         setEditorState({ attrs: newAttrs, config: newConfig });

@@ -32,6 +32,12 @@ function createFaqItem(div) {
   return details;
 }
 
+function handleContentUpdate({ detail: { element, content } }) {
+  console.log('In handle Update');
+  console.log(content);
+  console.log(element);
+}
+
 function addEventListenerToFaqItems(faq) {
   for (let i = 0; i < faq.length; i += 1) {
     faq[i].addEventListener('click', () => {
@@ -39,9 +45,7 @@ function addEventListenerToFaqItems(faq) {
         if (j !== i) faq[j].removeAttribute('open');
       }
     });
-    faq[i].addEventListener('apply-update', () => {
-      console.log('I am in apply update');
-    });
+    faq[i].addEventListener('apply-update', handleContentUpdate);
   }
 }
 
@@ -92,11 +96,7 @@ function appendElementsToBlock(block, faqListWrapper) {
   block.appendChild(faqContentRight);
 }
 
-function handleContentUpdate({ detail: { blockHtml, element } }) {
-  console.log('In handle Update');
-  console.log(blockHtml);
-  console.log(element);
-}
+
 
 function handleSelection({ detail: { prop, element } }) {
   console.log('In handle Selection');
