@@ -61,8 +61,7 @@ async function applyChanges(event) {
       || element?.closest('.block[data-aue-resource]')
       || element?.closest('.dynamic-block[data-aue-resource]');
     if (block) {
-      console.log(block.innerHTML);
-      const state = getState(block);
+      // const state = getState(block);
       const blockResource = block.getAttribute('data-aue-resource');
       const newBlock = parsedUpdate.querySelector(`[data-aue-resource="${blockResource}"]`);
       if (newBlock) {
@@ -74,7 +73,12 @@ async function applyChanges(event) {
           decorateIcons(newBlock);
           decorateBlock(newBlock);
           decorateRichtext(newBlock);
-          element.dispatchEvent(new CustomEvent('apply-update', { detail: newBlock.outerHTML }));
+          element.dispatchEvent(new CustomEvent('apply-update', {
+            detail: {
+              blockHtml: newBlock.outerHTML,
+              element,
+            },
+          }));
           return true;
         }
         newBlock.style.display = 'none';
@@ -85,7 +89,7 @@ async function applyChanges(event) {
         decorateRichtext(newBlock);
         await loadBlock(newBlock);
         block.remove();
-        setState(newBlock, state);
+        // setState(newBlock, state);
         newBlock.style.display = null;
         return true;
       }
@@ -129,7 +133,8 @@ function handleSelection(event) {
     const element = document.querySelector(`[data-aue-resource="${resource}"]`);
     const block = element.parentElement?.closest('.block') || element?.closest('.block');
 
-    if (block && block.matches('.faq')) {
+    if (block && block.matches('.dynamic-block')) {
+      block.dispatchEvent(new CustomEvent('navigate-to-route', { detail: { prop: detail.prop, element } }));
       if (detail.prop === 'ctas_submit') {
         const faqItems = document.querySelectorAll('.faq-item');
         for (let i = 0; i < faqItems.length; i += 1) {

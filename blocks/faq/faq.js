@@ -61,7 +61,7 @@ function createFaqItems(block) {
 }
 
 function addClassesToElements(block) {
-  // block.classList.add('dynamic-block');
+  block.classList.add('dynamic-block');
   block.children[0].classList.add('faq-title');
   block.children[1].classList.add('faq-picture');
   block.children[2].id = 'viewMoreBtn';
@@ -94,4 +94,13 @@ export default function decorate(block) {
   const faqListWrapper = createFaqItems(block);
   appendElementsToBlock(block, faqListWrapper);
   decorateButton(block.querySelector('.view-more-faq'));
+  block.addEventListener('apply-update', (event) => {
+    console.log('I am in apply update');
+    console.log(event.detail.element);
+  });
+  block.addEventListener('navigate-to-route', (event) => {
+    console.log('I am in navigate update');
+    console.log(event.detail.prop);
+    console.log(event.detail.element);
+  });
 }
