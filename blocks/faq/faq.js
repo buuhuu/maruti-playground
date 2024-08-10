@@ -106,6 +106,5 @@ export default function decorate(block) {
   const faqListWrapper = createFaqItems(block);
   appendElementsToBlock(block, faqListWrapper);
   decorateButton(block.querySelector('.view-more-faq'));
-  block.addEventListener('apply-update', handleContentUpdate);
   block.addEventListener('navigate-to-route', handleSelection);
 }
