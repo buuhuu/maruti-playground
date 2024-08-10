@@ -89,18 +89,23 @@ function appendElementsToBlock(block, faqListWrapper) {
   block.appendChild(faqContentRight);
 }
 
+function handleContentUpdate({ detail: { blockHtml, element } }) {
+  console.log('In handle Update');
+  console.log(blockHtml);
+  console.log(element);
+}
+
+function handleSelection({ detail: { prop, element } }) {
+  console.log('In handle Selection');
+  console.log(prop);
+  console.log(element);
+}
+
 export default function decorate(block) {
   addClassesToElements(block);
   const faqListWrapper = createFaqItems(block);
   appendElementsToBlock(block, faqListWrapper);
   decorateButton(block.querySelector('.view-more-faq'));
-  block.addEventListener('apply-update', (event) => {
-    console.log('I am in apply update');
-    console.log(event.detail.element);
-  });
-  block.addEventListener('navigate-to-route', (event) => {
-    console.log('I am in navigate update');
-    console.log(event.detail.prop);
-    console.log(event.detail.element);
-  });
+  block.addEventListener('apply-update', handleContentUpdate);
+  block.addEventListener('navigate-to-route', handleSelection);
 }
