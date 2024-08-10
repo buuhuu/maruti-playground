@@ -117,31 +117,17 @@ function handleSelection(event) {
     const block = element.parentElement?.closest('.block') || element?.closest('.block');
 
     if (block && block.matches('.dynamic-block')) {
-      block.dispatchEvent(new CustomEvent('navigate-to-route', { detail: { prop: detail.prop, element } }));
-      if (detail.prop === 'ctas_submit') {
-        const faqItems = document.querySelectorAll('.faq-item');
-        for (let i = 0; i < faqItems.length; i += 1) {
-          faqItems[i].style.display = 'block';
+      if (block?.dataset.activeRoute) {
+        // if the block does some routing we notify it about the new route based on the selection
+        // the children of the block are the containers for the route, the first class name
+        // the route name
+        const newRoute = [...block.children].find((child) => child.contains(element));
+        if (newRoute) {
+          const [newRouteName] = newRoute.className.split(' ');
+          block.dispatchEvent(new CustomEvent('navigate-to-route', { detail: { route: newRouteName } }));
         }
-        document.getElementById('viewMoreBtn').style.display = 'none';
       } else {
-        // close all details
-        block.querySelectorAll('details').forEach((details) => {
-          details.open = false;
-        });
-        const details = element.matches('details') ? element : element.querySelector('details');
-        details.open = true;
-      }
-    }
-
-    if (block?.dataset.activeRoute) {
-      // if the block does some routing we notify it about the new route based on the selection
-      // the children of the block are the containers for the route, the first class name
-      // the route name
-      const newRoute = [...block.children].find((child) => child.contains(element));
-      if (newRoute) {
-        const [newRouteName] = newRoute.className.split(' ');
-        block.dispatchEvent(new CustomEvent('navigate-to-route', { detail: { route: newRouteName } }));
+        block.dispatchEvent(new CustomEvent('navigate-to-route', { detail: { prop: detail.prop, element } }));
       }
     }
   }
