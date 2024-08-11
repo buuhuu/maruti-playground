@@ -105,24 +105,21 @@ function handleSelection({ detail: { prop, element } }) {
   console.log('In handle Selection');
   console.log(prop);
   console.log(element);
-
-  /**
-   * Handle this logic here
-   * if (detail.prop === 'ctas_submit') {
-   *         const faqItems = document.querySelectorAll('.faq-item');
-   *         for (let i = 0; i < faqItems.length; i += 1) {
-   *           faqItems[i].style.display = 'block';
-   *         }
-   *         document.getElementById('viewMoreBtn').style.display = 'none';
-   *       } else {
-   *         // close all details
-   *         block.querySelectorAll('details').forEach((details) => {
-   *           details.open = false;
-   *         });
-   *         const details = element.matches('details') ? element : element.querySelector('details');
-   *         details.open = true;
-   *       }
-   */
+  if (prop === 'ctas_submit') {
+    const faqItems = document.querySelectorAll('.faq-item');
+    for (let i = 0; i < faqItems.length; i += 1) {
+      faqItems[i].style.display = 'block';
+    }
+    document.getElementById('viewMoreBtn').style.display = 'none';
+  } else {
+    // close all details
+    document.querySelectorAll('details').forEach((details) => {
+      details.open = false;
+    });
+    const details = element.matches('details') ? element : element.querySelector('details');
+    details.open = true;
+  }
+   
 }
 
 export default function decorate(block) {
