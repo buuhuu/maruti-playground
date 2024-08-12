@@ -66,6 +66,7 @@ function createFaqItems(block) {
   const remainingDivs = Array.from(block.querySelectorAll('div.faq-item'));
   const faqListWrapper = document.createElement('div');
   faqListWrapper.classList.add('faq-list');
+  faqListWrapper.addEventListener('apply-update', handleContentUpdate);
 
   remainingDivs.forEach((div) => {
     const details = createFaqItem(div);
