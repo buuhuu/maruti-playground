@@ -1,5 +1,5 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
-import {loadBlock} from "../../scripts/aem";
+import { loadBlock } from '../../scripts/aem';
 
 function decorateButton(viewMoreButton) {
   const maxVisibleQuestions = 4;
@@ -33,7 +33,11 @@ function createFaqItem(div) {
   return details;
 }
 
-function handleContentUpdate({ detail: { blockHtml, element, content, block } }) {
+function handleContentUpdate({
+  detail: {
+    blockHtml, element, content, block,
+  },
+}) {
   /**
    * handle content update here as done here https://github.com/buuhuu/maruti-playground/blob/main/blocks/sf-journey-start/multi-step-form.js#L162
    */
