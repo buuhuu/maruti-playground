@@ -1,4 +1,5 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
+import {loadBlock} from "../../scripts/aem";
 
 function decorateButton(viewMoreButton) {
   const maxVisibleQuestions = 4;
@@ -32,13 +33,18 @@ function createFaqItem(div) {
   return details;
 }
 
-function handleContentUpdate({ detail: { element, content } }) {
+function handleContentUpdate({ detail: { blockHtml, element, content, block } }) {
   /**
    * handle content update here as done here https://github.com/buuhuu/maruti-playground/blob/main/blocks/sf-journey-start/multi-step-form.js#L162
    */
   console.log('In handle Update');
   console.log(content);
   console.log(element);
+
+  const newBlock = new DOMParser().parseFromString(blockHtml, 'text/html');
+  loadBlock(newBlock);
+  block.remove();
+  newBlock.style.display = null;
 }
 
 function addEventListenerToFaqItems(faq) {
@@ -99,12 +105,7 @@ function appendElementsToBlock(block, faqListWrapper) {
   block.appendChild(faqContentRight);
 }
 
-
-
 function handleSelection({ detail: { prop, element } }) {
-  console.log('In handle Selection');
-  console.log(prop);
-  console.log(element);
   if (prop === 'ctas_submit') {
     const faqItems = document.querySelectorAll('.faq-item');
     for (let i = 0; i < faqItems.length; i += 1) {
@@ -119,7 +120,6 @@ function handleSelection({ detail: { prop, element } }) {
     const details = element.matches('details') ? element : element.querySelector('details');
     details.open = true;
   }
-   
 }
 
 export default function decorate(block) {

@@ -61,6 +61,7 @@ async function applyChanges(event) {
               blockHtml: newBlock.outerHTML,
               element,
               content,
+              block,
             },
           }));
           return true;
