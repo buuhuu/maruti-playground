@@ -1,5 +1,5 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
-import { loadBlock } from '../../scripts/aem';
+import { loadBlock } from '../../scripts/aem.js';
 
 function decorateButton(viewMoreButton) {
   const maxVisibleQuestions = 4;
