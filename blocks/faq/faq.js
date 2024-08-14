@@ -35,7 +35,7 @@ function createFaqItem(div) {
 
 function handleContentUpdate({
   detail: {
-    blockHtml, element, content, block, newBlock,
+    element, content, block, newBlock,
   },
 }) {
   /**
@@ -46,6 +46,8 @@ function handleContentUpdate({
   console.log(element);
 
   // const newBlock = new DOMParser().parseFromString(blockHtml, 'text/html');
+  newBlock.style.display = 'none';
+  block.insertAdjacentElement('afterend', newBlock);
   loadBlock(newBlock).then(() => {
     block.remove();
     newBlock.style.display = null;
