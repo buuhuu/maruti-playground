@@ -41,16 +41,9 @@ function getNewBlockFromHtml(blockHtml) {
 
 function handleContentUpdate({
   detail: {
-    blockHtml, element, content, block,
+    blockHtml, block,
   },
 }) {
-  /**
-   * handle content update here as done here https://github.com/buuhuu/maruti-playground/blob/main/blocks/sf-journey-start/multi-step-form.js#L162
-   */
-  console.log('In handle Update');
-  console.log(content);
-  console.log(element);
-
   const newBlock = getNewBlockFromHtml(blockHtml);
   newBlock.style.display = 'none';
   block.insertAdjacentElement('afterend', newBlock);

@@ -59,10 +59,7 @@ async function applyChanges(event) {
           block.dispatchEvent(new CustomEvent('apply-update', {
             detail: {
               blockHtml: newBlock.outerHTML,
-              element,
-              content,
               block,
-              newBlock,
             },
           }));
           return true;
