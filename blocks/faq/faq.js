@@ -50,8 +50,6 @@ function handleContentUpdate({
   loadBlock(newBlock).then(() => {
     block.remove();
     newBlock.style.display = null;
-  }).catch((error) => {
-    console.error('Error loading block:', error);
   });
 }
 
