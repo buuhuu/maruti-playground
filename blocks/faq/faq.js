@@ -133,5 +133,4 @@ export default function decorate(block) {
   appendElementsToBlock(block, faqListWrapper);
   decorateButton(block.querySelector('.view-more-faq'));
   block.addEventListener('navigate-to-route', handleSelection);
-  block.addEventListener('apply-update', handleContentUpdate);
 }

@@ -64,14 +64,6 @@ async function applyChanges(event) {
               block,
             },
           }));
-          block.dispatchEvent(new CustomEvent('apply-update', {
-            detail: {
-              blockHtml: newBlock.outerHTML,
-              element,
-              content,
-              block,
-            },
-          }));
           return true;
         }
         newBlock.style.display = 'none';
