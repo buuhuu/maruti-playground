@@ -1,4 +1,5 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
+import { loadBlock } from '../../scripts/aem.js';
 
 function decorateButton(viewMoreButton) {
   const maxVisibleQuestions = 4;
@@ -34,7 +35,7 @@ function createFaqItem(div) {
 
 function handleContentUpdate({
   detail: {
-    element, content,
+    blockHtml, element, content, block, newBlock,
   },
 }) {
   /**
@@ -45,12 +46,12 @@ function handleContentUpdate({
   console.log(element);
 
   // const newBlock = new DOMParser().parseFromString(blockHtml, 'text/html');
-  // loadBlock(newBlock).then(() => {
-  //   block.remove();
-  //   newBlock.style.display = null;
-  // }).catch((error) => {
-  //   console.error('Error loading block:', error);
-  // });
+  loadBlock(newBlock).then(() => {
+    block.remove();
+    newBlock.style.display = null;
+  }).catch((error) => {
+    console.error('Error loading block:', error);
+  });
 }
 
 function addEventListenerToFaqItems(faq) {
