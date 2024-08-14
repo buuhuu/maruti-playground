@@ -65,6 +65,9 @@ async function applyChanges(event) {
               newBlock,
             },
           }));
+          await loadBlock(newBlock);
+          block.remove();
+          newBlock.style.display = null;
           return true;
         }
         newBlock.style.display = 'none';
