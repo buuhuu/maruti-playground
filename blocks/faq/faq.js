@@ -62,7 +62,6 @@ function addEventListenerToFaqItems(faq) {
         if (j !== i) faq[j].removeAttribute('open');
       }
     });
-    faq[i].addEventListener('apply-update', handleContentUpdate);
   }
 }
 
@@ -70,7 +69,6 @@ function createFaqItems(block) {
   const remainingDivs = Array.from(block.querySelectorAll('div.faq-item'));
   const faqListWrapper = document.createElement('div');
   faqListWrapper.classList.add('faq-list');
-  faqListWrapper.addEventListener('apply-update', handleContentUpdate);
 
   remainingDivs.forEach((div) => {
     const details = createFaqItem(div);
