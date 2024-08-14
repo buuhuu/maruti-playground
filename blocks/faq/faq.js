@@ -33,9 +33,15 @@ function createFaqItem(div) {
   return details;
 }
 
+function getNewBlockFromHtml(blockHtml) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(blockHtml, 'text/html');
+  return doc.body.firstChild;
+}
+
 function handleContentUpdate({
   detail: {
-    element, content, block, newBlock,
+    blockHtml, element, content, block,
   },
 }) {
   /**
@@ -45,7 +51,7 @@ function handleContentUpdate({
   console.log(content);
   console.log(element);
 
-  // const newBlock = new DOMParser().parseFromString(blockHtml, 'text/html');
+  const newBlock = getNewBlockFromHtml(blockHtml);
   newBlock.style.display = 'none';
   block.insertAdjacentElement('afterend', newBlock);
   loadBlock(newBlock).then(() => {
