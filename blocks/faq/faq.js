@@ -77,8 +77,10 @@ function createFaqItems(block) {
   });
 
   const faq = faqListWrapper.getElementsByTagName('details');
-  faq[0].setAttribute('open', '');
-  addEventListenerToFaqItems(faq);
+  if (faq.length > 0) {
+    faq[0].setAttribute('open', '');
+    addEventListenerToFaqItems(faq);
+  }
 
   return faqListWrapper;
 }
