@@ -127,7 +127,9 @@ function handleSelection({ detail: { prop, element } }) {
       details.open = false;
     });
     const details = element.matches('details') ? element : element.querySelector('details');
-    details.open = true;
+    if (details) {
+      details.open = true;
+    }
   }
 }
 
