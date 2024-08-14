@@ -62,6 +62,7 @@ async function applyChanges(event) {
               element,
               content,
               block,
+              newBlock,
             },
           }));
           return true;
