@@ -57,6 +57,7 @@ function addEventListenerToFaqItems(faq) {
         if (j !== i) faq[j].removeAttribute('open');
       }
     });
+    faq[i].addEventListener('apply-update', handleContentUpdate);
   }
 }
 
