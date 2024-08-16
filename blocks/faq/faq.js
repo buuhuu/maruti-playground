@@ -41,15 +41,16 @@ function getBlockFromHtml(blockHtml) {
 
 function handleContentUpdate({
   detail: {
-    newBlockHtml, blockHtml,
+    newBlockHtml, blockHtml, block,
   },
 }) {
   const newBlock = getBlockFromHtml(newBlockHtml);
-  const block = getBlockFromHtml(blockHtml);
+  const oldBlock = getBlockFromHtml(blockHtml);
   newBlock.style.display = 'none';
-  block.insertAdjacentElement('afterend', newBlock);
+  oldBlock.insertAdjacentElement('afterend', newBlock);
   loadBlock(newBlock).then(() => {
-    block.remove();
+    oldBlock.remove();
+    console.log(block);
     newBlock.style.display = null;
   });
 }
