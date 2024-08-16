@@ -48,9 +48,10 @@ function handleContentUpdate({
   const oldBlock = getBlockFromHtml(blockHtml);
   newBlock.style.display = 'none';
   oldBlock.insertAdjacentElement('afterend', newBlock);
+  block.insertAdjacentElement('afterend', newBlock);
   loadBlock(newBlock).then(() => {
     oldBlock.remove();
-    console.log(block);
+    block.remove();
     newBlock.style.display = null;
   });
 }
