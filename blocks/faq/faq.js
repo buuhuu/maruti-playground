@@ -42,6 +42,7 @@ function getBlockFromHtml(blockHtml) {
 function handleContentUpdate({ detail: update }) {
   const newBlock = getBlockFromHtml(update);
   const oldBlock = document.querySelector('.faq');
+  console.log(`Previous element is:${oldBlock}`);
   newBlock.style.display = 'none';
   oldBlock.insertAdjacentElement('afterend', newBlock);
   loadBlock(newBlock).then(() => {
