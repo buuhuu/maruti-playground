@@ -22,7 +22,7 @@ function createToggleButton(text) {
 function handleContentToggle(content, maxLength) {
   if (content.textContent.length > maxLength) {
     const originalText = content.textContent;
-    const truncatedText = originalText.substring(0, maxLength) + '...';
+    const truncatedText = `${originalText.substring(0, maxLength)}...`;
     const toggleReadButton = createToggleButton('Read More');
 
     content.textContent = truncatedText;
@@ -41,10 +41,10 @@ function handleContentToggle(content, maxLength) {
   }
 }
 
-export default async function decorate(block) {
+export default async function decorate() {
   const title = document.querySelector('.sf-about-us h2');
   const subtitle = document.querySelector('.sf-about-us h2 + p');
-  const content = document.querySelector('.sf-about-us > div:nth-child(2) > div > p');
+  const content = document.querySelector('.sf-about-us > div:nth-child(2) > div > div');
   const maxLength = 339;
 
   addClasses(title, subtitle, content);

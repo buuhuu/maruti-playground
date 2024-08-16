@@ -27,7 +27,7 @@
     height: 0.0625rem;
     margin: 0 auto;
     content: '';
-    background: #000000;
+    background: #000;
     bottom: 0;
     left: 0;
     right: 0;
@@ -63,6 +63,6 @@
 }
 
 .toggle-read-button:hover {
-    background-color: #FFFFFF;
+    background-color: #FFF;
     color: #164b91;
 }
