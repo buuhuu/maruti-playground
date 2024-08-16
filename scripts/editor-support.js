@@ -10,22 +10,6 @@ import {
 import { decorateRichtext } from './editor-support-rte.js';
 import { decorateMain, buildAutoBlocks } from './scripts.js';
 
-function getState(block) {
-  if (block.matches('.faq')) {
-    return [...block.querySelectorAll('details[open]')]
-      .map((details) => details.dataset.aueResource);
-  }
-  return null;
-}
-
-function setState(block, state) {
-  if (block.matches('.faq')) {
-    block.querySelectorAll('details').forEach((details) => {
-      details.open = state.includes(details.dataset.aueResource);
-    });
-  }
-}
-
 async function applyChanges(event) {
   // redecorate default content and blocks on patches (in the properties rail)
   const { detail } = event;
@@ -61,7 +45,6 @@ async function applyChanges(event) {
       || element?.closest('.block[data-aue-resource]')
       || element?.closest('.dynamic-block[data-aue-resource]');
     if (block) {
-      const state = getState(block);
       const blockResource = block.getAttribute('data-aue-resource');
       const newBlock = parsedUpdate.querySelector(`[data-aue-resource="${blockResource}"]`);
       if (newBlock) {
@@ -84,7 +67,6 @@ async function applyChanges(event) {
         decorateRichtext(newBlock);
         await loadBlock(newBlock);
         block.remove();
-        setState(newBlock, state);
         newBlock.style.display = null;
         return true;
       }
@@ -128,31 +110,18 @@ function handleSelection(event) {
     const element = document.querySelector(`[data-aue-resource="${resource}"]`);
     const block = element.parentElement?.closest('.block') || element?.closest('.block');
 
-    if (block && block.matches('.faq')) {
-      if (detail.prop === 'ctas_submit') {
-        const faqItems = document.querySelectorAll('.faq-item');
-        for (let i = 0; i < faqItems.length; i += 1) {
-          faqItems[i].style.display = 'block';
+    if (block && block.matches('.dynamic-block')) {
+      if (block?.dataset.activeRoute) {
+        // if the block does some routing we notify it about the new route based on the selection
+        // the children of the block are the containers for the route, the first class name
+        // the route name
+        const newRoute = [...block.children].find((child) => child.contains(element));
+        if (newRoute) {
+          const [newRouteName] = newRoute.className.split(' ');
+          block.dispatchEvent(new CustomEvent('navigate-to-route', { detail: { route: newRouteName } }));
         }
-        document.getElementById('viewMoreBtn').style.display = 'none';
       } else {
-        // close all details
-        block.querySelectorAll('details').forEach((details) => {
-          details.open = false;
-        });
-        const details = element.matches('details') ? element : element.querySelector('details');
-        details.open = true;
-      }
-    }
-
-    if (block?.dataset.activeRoute) {
-      // if the block does some routing we notify it about the new route based on the selection
-      // the children of the block are the containers for the route, the first class name
-      // the route name
-      const newRoute = [...block.children].find((child) => child.contains(element));
-      if (newRoute) {
-        const [newRouteName] = newRoute.className.split(' ');
-        block.dispatchEvent(new CustomEvent('navigate-to-route', { detail: { route: newRouteName } }));
+        block.dispatchEvent(new CustomEvent('navigate-to-route', { detail: { prop: detail.prop, element } }));
       }
     }
   }
