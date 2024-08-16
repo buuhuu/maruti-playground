@@ -109,7 +109,6 @@ function handleSelection(event) {
   if (resource) {
     const element = document.querySelector(`[data-aue-resource="${resource}"]`);
     const block = element.parentElement?.closest('.block') || element?.closest('.block');
-
     if (block && block.matches('.dynamic-block')) {
       if (block?.dataset.activeRoute) {
         // if the block does some routing we notify it about the new route based on the selection
