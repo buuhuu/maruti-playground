@@ -39,12 +39,8 @@ function getBlockFromHtml(blockHtml) {
   return doc.body.firstChild;
 }
 
-function handleContentUpdate({
-  detail: {
-    newBlockHtml,
-  },
-}) {
-  const newBlock = getBlockFromHtml(newBlockHtml);
+function handleContentUpdate({ detail: update }) {
+  const newBlock = getBlockFromHtml(update);
   const oldBlock = document.querySelector('.faq');
   newBlock.style.display = 'none';
   oldBlock.insertAdjacentElement('afterend', newBlock);
