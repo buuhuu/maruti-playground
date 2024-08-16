@@ -1,0 +1,68 @@
+.block.sf-about-us .sf-text-title {
+    margin-bottom: 1.125rem;
+    text-align: center;
+    font-size: 1.46rem;
+    font-family: Lato, sans-serif;
+    line-height: 1.75rem;
+    color: #164b91;
+    text-transform: uppercase;
+    font-weight: 550;
+}
+
+.block.sf-about-us .sf-text-subtitle {
+    margin-bottom: 1.125rem;
+    text-align: center;
+    font-size: 1.125rem;
+    font-family: Lato, sans-serif;
+    font-weight: 375;
+    line-height: 1.75rem;
+    color: #164b91;
+    padding: 0 0 0.93rem;
+    position: relative;
+}
+
+.block.sf-about-us .sf-text-subtitle::after {
+    position: absolute;
+    width: 6.25rem;
+    height: 0.0625rem;
+    margin: 0 auto;
+    content: '';
+    background: #000000;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.block.sf-about-us .sf-text-content {
+    word-wrap: break-word;
+    font-size: 1rem;
+    color: #000;
+    font-weight: 300;
+    font-family: Lato, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.375rem;
+    padding: 0 1.875rem;
+    position: relative;
+    text-align: left;
+}
+
+.toggle-read-button {
+    display: block;
+    margin: 0.625rem auto 0;
+    padding: 0.3125rem 1rem;
+    border-radius: 0.0625rem;
+    cursor: pointer;
+    text-align: center;
+    background: #164b91;
+    border-color: #164b91;
+    font-size: 0.9rem;
+    font-weight: 1;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    color: #d3d3d3;
+}
+
+.toggle-read-button:hover {
+    background-color: #FFFFFF;
+    color: #164b91;
+}
