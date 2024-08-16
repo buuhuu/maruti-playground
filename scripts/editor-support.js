@@ -58,8 +58,8 @@ async function applyChanges(event) {
           decorateRichtext(newBlock);
           block.dispatchEvent(new CustomEvent('apply-update', {
             detail: {
-              blockHtml: newBlock.outerHTML,
-              block,
+              newBlockHtml: newBlock.outerHTML,
+              blockHtml: block.outerHTML,
             },
           }));
           return true;
