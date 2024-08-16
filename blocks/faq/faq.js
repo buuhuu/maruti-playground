@@ -41,17 +41,15 @@ function getBlockFromHtml(blockHtml) {
 
 function handleContentUpdate({
   detail: {
-    newBlockHtml, blockHtml, block,
+    newBlockHtml,
   },
 }) {
   const newBlock = getBlockFromHtml(newBlockHtml);
-  const oldBlock = getBlockFromHtml(blockHtml);
+  const oldBlock = document.querySelector('.faq');
   newBlock.style.display = 'none';
   oldBlock.insertAdjacentElement('afterend', newBlock);
-  block.insertAdjacentElement('afterend', newBlock);
   loadBlock(newBlock).then(() => {
     oldBlock.remove();
-    block.remove();
     newBlock.style.display = null;
   });
 }

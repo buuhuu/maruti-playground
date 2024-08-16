@@ -59,8 +59,6 @@ async function applyChanges(event) {
           block.dispatchEvent(new CustomEvent('apply-update', {
             detail: {
               newBlockHtml: newBlock.outerHTML,
-              blockHtml: block.outerHTML,
-              block,
             },
           }));
           return true;
