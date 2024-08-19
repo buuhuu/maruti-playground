@@ -1,5 +1,151 @@
 .sf-journey-start-container {
-  background-color: lightgray;
+  width: 100%;
+}
+
+.sf-journey-start-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.block.sf-journey-start {
+  background: #164b91;
+  max-width: 100%;
+}
+
+.request-otp-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 36px 28px 35px 21px;
+  overflow: auto;
+}
+
+.request-otp-step form {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  padding-right: 56px;
+}
+
+.request-otp-step form .form-left {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.request-otp-step form p {
+  font-weight: normal;
+  margin: 0 0 13px;
+  font-size: 16px;
+  line-height: 22px;
+  color: #FFFFFFB2;
+}
+
+.request-otp-step form em {
+  display: block;
+  font-size: 14px;
+  font-weight: 300;
+  color: #FFFFFFB2;
+  line-height: 20px;
+  margin-top: 13px;
+}
+
+.request-otp-step form p a {
+  color: #fff;
+}
+
+.request-otp-step form .form-right {
+  display: flex;
+  flex-direction:column;
+  padding: 0;
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.request-otp-step .form-right .request-otp-step-input {
+  display: flex;
+  flex-direction:column;
+}
+
+.request-otp-step-options input {
+  cursor: pointer;
+  padding: 0;
+  border: 2px solid #00b4e4;
+  line-height: 50px;
+  border-radius: 2px;
+  margin: 0;
+}
+
+.request-otp-step .request-otp-step-input input {
+  display: block;
+  border: 1px solid #b0b0b0;
+  background: transparent;
+  height: 52px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 400;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  padding: 6px 12px;
+}
+
+.request-otp-step .request-otp-step-input input.in-valid {
+  border-color: #F00;
+}
+
+.request-otp-step .request-otp-step-input button {
+  display: block;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  max-height: 54px;
+  padding: 17px 10px;
+  background-color: #fff;
+  color: #000;
+  border-color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  cursor: pointer;
+}
+
+.request-otp-step-options {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-left: 0;
+  flex-basis: 100%;
+}
+
+
+.request-otp-step-options > div {
+  line-height: 1.9;
+  display: inline-block;
+  top: 0;
+  position: relative;
+  cursor: pointer;
+  margin: 0;
+}
+
+.request-otp-step-options > div:not(:first-child) {
+  padding: 0 0 0 30px;
+}
+
+.request-otp-step-options label {
+  margin: 0 0 0 8px;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 400;
 }
 
 .sf-journey-start > div:not(.active) {
@@ -7,10 +153,63 @@
 }
 
 .sf-journey-start .error-form {
-  color: red;
   display: none;
 }
 
-.sf-journey-start .error-form.active {
-  display:block;
+
+
+@media (width >= 768px) {
+  .block.sf-journey-start {
+    margin-right: 120px;
+  }
+
+  .request-otp-step form {
+    flex-direction: row;
+  }
+
+  .request-otp-step form .form-left {
+    flex: 0 0 50%;
+  }
+
+  .request-otp-step form .form-right {
+    flex: 0 0 50%;
+    padding-left: 15px;
+    margin-top: 50px;
+  }
+
+  .request-otp-step .form-right .request-otp-step-input {
+    justify-content: center;
+  }
+
+  .request-otp-step .request-otp-step-input input {
+    height: 44px;
+  }
+
+  .request-otp-step .request-otp-step-input button {
+    height: 44px;
+    padding: 0;
+  }
+
+  .sf-journey-start .error-form.active {
+    color: red;
+    display:block;
+  }
 }
+
+@media (width >= 1024px) {
+  .sf-journey-start-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  .block.sf-journey-start {
+    max-width: 722px;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+}
+
