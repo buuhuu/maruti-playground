@@ -57,28 +57,33 @@ function RequestOtpStep({ config }) {
 
   return html`
     <form ref=${formRef} onsubmit=${(e) => handleOnSubmit(e)}>
-      <div class="request-otp-step-options">
-        <div>
-          <input type="radio" id="customer-journey" name="journey-type" value="customer" checked />
-          ${hnodeAs(customerOption, 'label', { for: 'customer-journey' })}
+      <div class="form-left">
+        <div class="request-otp-step-options">
+          <div>
+            <input type="radio" id="customer-journey" name="journey-type" value="customer" checked />
+            ${hnodeAs(customerOption, 'label', { for: 'customer-journey' })}
+          </div>
+          <div>
+            <input type="radio" id="dealer-journey" name="journey-type" value="dealer" />
+            ${hnodeAs(dealerOption, 'label', { for: 'dealer-journey' })}
+          </div>
         </div>
-        <div>
-          <input type="radio" id="dealer-journey" name="journey-type" value="dealer" />
-          ${hnodeAs(dealerOption, 'label', { for: 'dealer-journey' })}
+        <div class="request-otp-step-description">
+          ${description}
         </div>
       </div>
-      <div class="request-otp-step-description">
-        ${description}
+      <div class="form-right">
+        <div class="request-otp-step-input">
+            <input type="text" name="mobile-number" class=${`mobile-number ${showError ? 'in-valid' : ''}`} placeholder="Mobile Number" />
+          <em class=${`error-form ${showError ? 'active' : ''}`}>
+            *Mobile Number is not Valid
+          </em>
+          <button type="submit">
+            ${hnodeAs(button, 'span')}
+          </button>
+        </div>
       </div>
-      <div class="request-otp-step-input">
-        <input type="text" name="mobile-number" placeholder="Mobile Number" />
-        <button type="submit">
-          ${hnodeAs(button, 'span')}
-        </button>
-      </div>
-      <div class=${`error-form ${showError ? 'active' : ''}`}>
-        <p>*Mobile Number is not Valid</p>
-      </div>
+      
     </form>
   `;
 }
