@@ -122,6 +122,7 @@ function handleSelection({ detail: { prop, element } }) {
     // close all details
     document.querySelectorAll('details').forEach((details) => {
       details.open = false;
+      details.style.maxHeight = '0px';
     });
     const details = element.matches('details') ? element : element.querySelector('details');
     if (details) {
