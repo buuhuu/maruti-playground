@@ -1,3 +1,7 @@
+.section.faq-container {
+    padding: 2.187rem 0.937rem;
+}
+
 .block.faq {
     margin-top: 1.5rem;
     -webkit-font-smoothing: antialiased;
@@ -152,10 +156,15 @@
     .block.faq .faq-title {
         margin-bottom: 2rem;
     }
+
+    .section.faq-container {
+        padding: 2.187rem 0;
+    }
 }
 
 @media (width >= 900px) {
-    .section > div {
-        max-width: 1170px;
+    .faq-wrapper {
+        max-width: 1200px;
+        margin: auto;
     }
 }
