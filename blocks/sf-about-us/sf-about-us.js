@@ -1,4 +1,7 @@
-function addClasses(title, subtitle, content) {
+import { loadBlock } from '../../scripts/aem.js';
+
+function addClasses(block, title, subtitle, content) {
+  block.classList.add('dynamic-block');
   if (title) {
     title.classList.add('sf-text-title');
   }
@@ -41,12 +44,50 @@ function handleContentToggle(content, maxLength) {
   }
 }
 
-export default async function decorate() {
+function handleSelection({ detail: { prop, element } }) {
+  if (prop === 'ctas_submit') {
+    const faqItems = document.querySelectorAll('.faq-item');
+    for (let i = 0; i < faqItems.length; i += 1) {
+      faqItems[i].style.display = 'block';
+    }
+    document.getElementById('viewMoreBtn').style.display = 'none';
+  } else {
+    // close all details
+    document.querySelectorAll('details').forEach((details) => {
+      details.open = false;
+    });
+    const details = element.matches('details') ? element : element.querySelector('details');
+    if (details) {
+      details.open = true;
+    }
+  }
+}
+
+function getBlockFromHtml(blockHtml) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(blockHtml, 'text/html');
+  return doc.body.firstChild;
+}
+
+function handleContentUpdate({ detail: update }) {
+  const newBlock = getBlockFromHtml(update);
+  const oldBlock = document.querySelector('.faq');
+  newBlock.style.display = 'none';
+  oldBlock.insertAdjacentElement('afterend', newBlock);
+  loadBlock(newBlock).then(() => {
+    oldBlock.remove();
+    newBlock.style.display = null;
+  });
+}
+
+export default async function decorate(block) {
   const title = document.querySelector('.sf-about-us h2');
   const subtitle = document.querySelector('.sf-about-us h2 + p');
   const content = document.querySelector('.sf-about-us > div:nth-child(2) > div > div');
   const maxLength = 339;
 
-  addClasses(title, subtitle, content);
+  addClasses(block, title, subtitle, content);
   handleContentToggle(content, maxLength);
+  block.addEventListener('navigate-to-route', handleSelection);
+  block.addEventListener('apply-update', handleContentUpdate);
 }
