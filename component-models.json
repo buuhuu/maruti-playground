@@ -418,8 +418,8 @@
       },
       {
         "component": "text",
-        "name": "ctas_submit",
-        "label": "View More Button",
+        "name": "text_ctas_submit",
+        "label": "Read More Button",
         "required": true
       }
     ]

@@ -83,7 +83,7 @@ function handleContentUpdate({ detail: update }) {
 export default async function decorate(block) {
   const title = document.querySelector('.sf-about-us h2');
   const subtitle = document.querySelector('.sf-about-us h2 + p');
-  const content = document.querySelector('.sf-about-us > div:nth-child(2) > div > div');
+  const content = document.querySelector('.sf-about-us > div:nth-child(2) > div');
   const maxLength = 339;
 
   addClasses(block, title, subtitle, content);
