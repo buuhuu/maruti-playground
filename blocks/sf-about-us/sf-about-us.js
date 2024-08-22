@@ -1,5 +1,7 @@
 import { loadBlock } from '../../scripts/aem.js';
 
+const maxLength = 339;
+
 function addClasses(block, title, subtitle, content) {
   block.classList.add('dynamic-block');
   if (title) {
@@ -15,14 +17,12 @@ function addClasses(block, title, subtitle, content) {
   }
 }
 
-function createToggleButton(text) {
-  const button = document.createElement('button');
-  button.textContent = text;
-  button.classList.add('toggle-read-button');
-  return button;
-}
+// function createToggleButton(text) {
+//   const button = document.createElement('button');
+//   button.textContent = text;
+// }
 
-function handleContentToggle(content, maxLength, toggleButton) {
+function handleContentToggle(content, toggleButton) {
   if (content.textContent.length > maxLength) {
     const originalText = content.textContent;
     const truncatedText = `${originalText.substring(0, maxLength)}...`;
@@ -45,22 +45,21 @@ function handleContentToggle(content, maxLength, toggleButton) {
   }
 }
 
-function handleSelection({ detail: { prop, element } }) {
-  if (prop === 'ctas_submit') {
-    const faqItems = document.querySelectorAll('.faq-item');
-    for (let i = 0; i < faqItems.length; i += 1) {
-      faqItems[i].style.display = 'block';
+function handleSelection({ detail: { prop } }) {
+  if (prop === 'sf-about-us_ctas_submit') {
+    const container = document.querySelectorAll('.sf-about-us');
+    const content = container.querySelectorAll('p')[1];
+    const toggleButton = container.querySelectorAll('p')[2];
+    const originalText = content.textContent;
+    const truncatedText = `${originalText.substring(0, maxLength)}...`;
+    if (toggleButton.textContent === 'Read More') {
+      content.textContent = originalText;
+      toggleButton.textContent = 'Read Less';
+    } else {
+      content.textContent = truncatedText;
+      toggleButton.textContent = 'Read More';
     }
-    document.getElementById('viewMoreBtn').style.display = 'none';
-  } else {
-    // close all details
-    document.querySelectorAll('details').forEach((details) => {
-      details.open = false;
-    });
-    const details = element.matches('details') ? element : element.querySelector('details');
-    if (details) {
-      details.open = true;
-    }
+    content.appendChild(toggleButton);
   }
 }
 
@@ -88,10 +87,9 @@ export default async function decorate(block) {
   const subtitle = container.querySelectorAll('p')[0];
   const content = container.querySelectorAll('p')[1];
   const toggleButton = container.querySelectorAll('p')[2];
-  const maxLength = 339;
 
   addClasses(block, title, subtitle, content);
-  handleContentToggle(content, maxLength, toggleButton);
+  handleContentToggle(content, toggleButton);
   block.addEventListener('navigate-to-route', handleSelection);
   block.addEventListener('apply-update', handleContentUpdate);
 }

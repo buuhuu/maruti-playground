@@ -420,7 +420,7 @@
         "component": "text",
         "name": "sf-about-us_ctas_submit",
         "label": "Read More Button",
-        "required": true
+        "hidden": true
       }
     ]
   }
