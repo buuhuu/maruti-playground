@@ -11,7 +11,7 @@ function addClasses(block, title, subtitle, content) {
   }
 
   if (content) {
-    content.parentElement.classList.add('sf-text-content');
+    content.classList.add('sf-text-content');
   }
 }
 
@@ -22,12 +22,13 @@ function createToggleButton(text) {
   return button;
 }
 
-function handleContentToggle(content, maxLength) {
+function handleContentToggle(content, maxLength, toggleButton) {
   if (content.textContent.length > maxLength) {
     const originalText = content.textContent;
     const truncatedText = `${originalText.substring(0, maxLength)}...`;
-    const toggleReadButton = createToggleButton('Read More');
-
+    // const toggleReadButton = createToggleButton('Read More');
+    toggleButton.classList.add('toggle-read-button');
+    const toggleReadButton = toggleButton;
     content.textContent = truncatedText;
     content.appendChild(toggleReadButton);
 
@@ -81,13 +82,16 @@ function handleContentUpdate({ detail: update }) {
 }
 
 export default async function decorate(block) {
-  const title = document.querySelector('.sf-about-us h2');
-  const subtitle = document.querySelector('.sf-about-us h2 + p');
-  const content = document.querySelector('.sf-about-us > div:nth-child(2) > div');
+  // Select the container element
+  const container = document.querySelector('.sf-about-us');
+  const title = container.querySelector('h2');
+  const subtitle = container.querySelectorAll('p')[0];
+  const content = container.querySelectorAll('p')[1];
+  const toggleButton = container.querySelectorAll('p')[2];
   const maxLength = 339;
 
   addClasses(block, title, subtitle, content);
-  handleContentToggle(content, maxLength);
+  handleContentToggle(content, maxLength, toggleButton);
   block.addEventListener('navigate-to-route', handleSelection);
   block.addEventListener('apply-update', handleContentUpdate);
 }

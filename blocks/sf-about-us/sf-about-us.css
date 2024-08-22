@@ -46,23 +46,24 @@
     text-align: left;
 }
 
-.toggle-read-button {
+.block.sf-about-us .toggle-read-button {
     display: block;
+    width: fit-content;
     margin: 0.625rem auto 0;
     padding: 0.3125rem 1rem;
     border-radius: 0.0625rem;
     cursor: pointer;
     text-align: center;
     background: #164b91;
-    border-color: #164b91;
+    border: 1px solid #164b91;
     font-size: 0.9rem;
-    font-weight: 1;
     text-transform: uppercase;
     -webkit-font-smoothing: antialiased;
-    color: #d3d3d3;
+    color: #FFF;
 }
 
-.toggle-read-button:hover {
+.block.sf-about-us .toggle-read-button:hover {
     background-color: #FFF;
     color: #164b91;
+    border: 1px solid #164b91;
 }
