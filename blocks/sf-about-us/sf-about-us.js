@@ -81,11 +81,11 @@ function handleContentUpdate({ detail: update }) {
 
 export default async function decorate(block) {
   // Select the container element
-  const container = document.querySelector('.sf-about-us');
-  const title = container.querySelector('h2');
-  const subtitle = container.querySelectorAll('p')[0];
-  const content = container.querySelectorAll('p')[1];
-  const toggleButton = container.querySelectorAll('p')[2];
+  // const container = document.querySelector('.sf-about-us');
+  const title = block.querySelector('h2');
+  const subtitle = block.querySelectorAll('p')[0];
+  const content = block.querySelectorAll('p')[1];
+  const toggleButton = block.querySelectorAll('p')[2];
 
   addClasses(block, title, subtitle, content);
   handleContentToggle(content, toggleButton);
