@@ -71,7 +71,7 @@ function getBlockFromHtml(blockHtml) {
 
 function handleContentUpdate({ detail: update }) {
   const newBlock = getBlockFromHtml(update);
-  const oldBlock = document.querySelector('.faq');
+  const oldBlock = document.querySelector('.sf-about-us');
   newBlock.style.display = 'none';
   oldBlock.insertAdjacentElement('afterend', newBlock);
   loadBlock(newBlock).then(() => {
