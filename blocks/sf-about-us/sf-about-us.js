@@ -28,26 +28,25 @@ function handleContentToggle(content, toggleButton) {
     const truncatedText = `${originalText.substring(0, maxLength)}...`;
     // const toggleReadButton = createToggleButton('Read More');
     toggleButton.classList.add('toggle-read-button');
-    const toggleReadButton = toggleButton;
     content.textContent = truncatedText;
-    content.appendChild(toggleReadButton);
+    content.appendChild(toggleButton);
 
-    toggleReadButton.addEventListener('click', () => {
-      if (toggleReadButton.textContent === 'Read More') {
+    toggleButton.addEventListener('click', () => {
+      if (toggleButton.textContent === 'Read More') {
         content.textContent = originalText;
-        toggleReadButton.textContent = 'Read Less';
+        toggleButton.textContent = 'Read Less';
       } else {
         content.textContent = truncatedText;
-        toggleReadButton.textContent = 'Read More';
+        toggleButton.textContent = 'Read More';
       }
-      content.appendChild(toggleReadButton);
+      content.appendChild(toggleButton);
     });
   }
 }
 
 function handleSelection({ detail: { prop } }) {
   if (prop === 'sf-about-us_ctas_submit') {
-    const container = document.querySelectorAll('.sf-about-us');
+    const container = document.querySelector('.sf-about-us');
     const content = container.querySelectorAll('p')[1];
     const toggleButton = container.querySelectorAll('p')[2];
     const originalText = content.textContent;
