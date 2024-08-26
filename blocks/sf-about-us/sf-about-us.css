@@ -55,7 +55,7 @@
     cursor: pointer;
     text-align: center;
     background: #164b91;
-    border: 1px solid #164b91;
+    border: 0.0625rem solid #164b91;
     font-size: 0.9rem;
     text-transform: uppercase;
     -webkit-font-smoothing: antialiased;
@@ -65,5 +65,5 @@
 .block.sf-about-us .toggle-read-button:hover {
     background-color: #FFF;
     color: #164b91;
-    border: 1px solid #164b91;
+    border: 0.0625rem solid #164b91;
 }

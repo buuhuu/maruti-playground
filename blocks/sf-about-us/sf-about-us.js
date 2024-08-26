@@ -17,11 +17,6 @@ function addClasses(block, title, subtitle, content) {
   }
 }
 
-// function createToggleButton(text) {
-//   const button = document.createElement('button');
-//   button.textContent = text;
-// }
-
 function handleContentToggle(content, toggleButton) {
   if (content.textContent.length > maxLength) {
     const originalText = content.textContent;
@@ -80,8 +75,6 @@ function handleContentUpdate({ detail: update }) {
 }
 
 export default async function decorate(block) {
-  // Select the container element
-  // const container = document.querySelector('.sf-about-us');
   const title = block.querySelector('h2');
   const subtitle = block.querySelectorAll('p')[0];
   const content = block.querySelectorAll('p')[1];
