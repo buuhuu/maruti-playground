@@ -389,5 +389,17 @@
         "label": "Description"
       }
     ]
+  },
+  {
+    "id": "custom-asset-two",
+    "fields": [
+      {
+        "component": "custom-asset-namespace:custom-asset",
+        "name": "video",
+        "label": "Video",
+        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpicker/tools/assets-selector/video.config.json",
+        "valueType": "string"
+      }
+    ]
   }
 ]
