@@ -183,10 +183,10 @@ export function decorateDeliveryAssets(main) {
 
 export  function decorateDeliveryVideos(main) {
   const anchors = Array.from(main.getElementsByTagName('a'));
-  const deliveryUrls = anchors.filter((anchor) => anchor.textContent
+  const urls = anchors.filter((anchor) => anchor.textContent
     .includes(DELIVERY_ASSET_IDENTIFIER) && anchor.href.includes(DELIVERY_VIDEO_IDENTIFIER));
-  if (deliveryUrls.length > 0) {
-    deliveryUrls.forEach( (anchor) => {
+  if (urls.length > 0) {
+    urls.forEach( (anchor) => {
       const authorUrl = anchor.href;
       const altText = anchor.title;
       const video =  createVideoElement(authorUrl, altText);

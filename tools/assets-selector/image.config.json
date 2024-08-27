@@ -1,9 +1,48 @@
 {
     "aemTierType": [
-        "delivery"
+        "author"
     ],
     "apiKey": "asset_search_service",
     "repoNames": [
-        "delivery-p130360-e1403848.adobeaemcloud.com"
+        "author-p130360-e1403848.adobeaemcloud.com"
+    ],
+    "aem:tier":"author",
+    "videoResponseType" : "html",
+    "filterSchema": [
+        {
+            "fields": [
+                {
+                    "element": "checkbox",
+                    "name": "type",
+                    "defaultValue": [
+                        "image/*"
+                    ],
+                    "options": [
+                        {
+                            "label": "Image",
+                            "value": "image/*",
+                            "readOnly": true
+                        }
+                    ],
+                    "orientation": "horizontal"
+                },
+                {
+                    "element": "radiogroup",
+                    "name": "property",
+                    "defaultValue": [
+                        "dam:assetStatus==approved"
+                    ],
+                    "readOnly": true,
+                    "options": [
+                        {
+                            "label": "Approved",
+                            "value": "dam:assetStatus==approved"
+                        }
+                    ]
+                }
+            ],
+            "header": "File Type",
+            "groupKey": "FileTypeGroup"
+        }
     ]
 }
