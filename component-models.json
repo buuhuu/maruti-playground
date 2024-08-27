@@ -399,6 +399,35 @@
         "label": "Video",
         "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpickerVideo/tools/assets-selector/videos.config.json",
         "valueType": "string"
+      },
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Options",
+        "options": [
+          {
+            "name": "Muted",
+            "value": "muted"
+          },
+          {
+            "name": "Loop",
+            "value": "loop"
+          },
+          {
+            "name": "Inline",
+            "value": "playsinline"
+          },
+          {
+            "name": "Autoplay",
+            "value": "autoplay"
+          },
+          {
+            "name": "Controls",
+            "value": "controls"
+          }
+        ]
       }
     ]
   }

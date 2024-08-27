@@ -166,13 +166,13 @@ function createOptimizedPictureWithAbsoluteUrls(
  * Decorates delivery assets by replacing anchor elements with optimized pictures.
  * @param {HTMLElement} main - The main element containing the anchor elements.
  */
-export function decorateDeliveryAssets(main) {
+export function decorateDeliveryImages(main) {
   const anchors = Array.from(main.getElementsByTagName('a'));
-  const deliveryUrls = anchors.filter((anchor) => anchor.textContent
+  const urls = anchors.filter((anchor) => anchor.textContent
     .includes(DELIVERY_ASSET_IDENTIFIER) && anchor.href.includes(DELIVERY_IMAGE_IDENTIFIER));
-  if (deliveryUrls.length > 0) {
-    deliveryUrls.forEach((anchor) => {
-      const deliveryUrl = anchor.href;
+  if (urls.length > 0) {
+    urls.forEach((anchor) => {
+      const deliveryUrl = deriveDeliveryURL(anchor.href,"image");
       const altText = anchor.title;
       const picture = createOptimizedPictureWithAbsoluteUrls(deliveryUrl, altText);
       anchor.replaceWith(picture);
@@ -274,7 +274,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
-  decorateDeliveryAssets(main);
+  decorateDeliveryImages(main);
   decorateDeliveryVideos(main);
   decorateBlocks(main);
 }
