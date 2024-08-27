@@ -1,9 +1,12 @@
 {
     "aemTierType": [
-        "author"
+        "delivery"
     ],
     "apiKey": "asset_search_service",
-    "repoNames": [],
+    "repoNames": [
+        "delivery-p130360-e1403848.adobeaemcloud.com"
+    ],
+    "aem:tier":"delivery",
     "videoResponseType" : "html",
     "filterSchema": [
         {
@@ -22,26 +25,6 @@
                         }
                     ],
                     "orientation": "horizontal"
-                },
-                {
-                    "header": "Asset Status",
-                    "groupKey": "AssetStatusGroup",
-                    "fields": [
-                        {
-                            "element": "radiogroup",
-                            "name": "property",
-                            "defaultValue": [
-                                "dam:assetStatus==approved"
-                            ],
-                            "readOnly": true,
-                            "options": [
-                                {
-                                    "label": "Approved",
-                                    "value": "dam:assetStatus==approved"
-                                }
-                            ]
-                        }
-                    ]
                 }
             ],
             "header": "File Type",
