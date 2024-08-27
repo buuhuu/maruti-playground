@@ -416,8 +416,12 @@
             "value": "loop"
           },
           {
+            "name": "Hero",
+            "value": "hero"
+          },
+          {
             "name": "Inline",
-            "value": "playsinline"
+            "value": "inline"
           },
           {
             "name": "Autoplay",
