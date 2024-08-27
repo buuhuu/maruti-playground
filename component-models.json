@@ -64,12 +64,16 @@
     ]
   },
   {
+    "id": "video",
+    "fields": [
+  {
     "component": "custom-asset-namespace:custom-asset",
     "name": "video",
     "label": "Video",
     "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpickerVideo/tools/assets-selector/videos.config.json",
     "valueType": "string"
-  },
+  }   
+]},
   {
     "id": "image-slide",
     "fields": [
