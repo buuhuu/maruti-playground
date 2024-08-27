@@ -1,12 +1,12 @@
 {
     "aemTierType": [
-        "delivery"
+        "author"
     ],
     "apiKey": "asset_search_service",
     "repoNames": [
-        "delivery-p130360-e1403848.adobeaemcloud.com"
+        "author-p130360-e1403848.adobeaemcloud.com"
     ],
-    "aem:tier":"delivery",
+    "aem:tier":"author",
     "videoResponseType" : "html",
     "filterSchema": [
         {

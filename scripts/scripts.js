@@ -190,7 +190,7 @@ export function decorateDeliveryVideos(main) {
       const deliveryUrl = anchor.href;
       const altText = anchor.title;
       const video = createVideoElement(deliveryUrl, altText);
-      anchor.parentElement.parentElement.parentElement.replaceWith(video);
+      anchor.parentElement.replaceWith(video);
     });
   }
 }
@@ -202,24 +202,16 @@ function createVideoElement(deliveryUrl, altText) {
   const url = new URL(deliveryUrl);
   const videoUrl = `${url.origin}${url.pathname.split('?')[0]}`;
   const assetName = url.searchParams.get('assetname');
-
-  const imageUrl = deliveryUrl.replace('/play', '/as/poster.jpg').split('?')[0];
+  const posterImageUrl = deliveryUrl.replace('/play', '/as/poster.jpg').split('?')[0];
 
   const videoDiv = document.createElement('div');
-  videoDiv.className = 'video';
-
-  const innerDiv = document.createElement('div');
-  const nestedDiv = document.createElement('div');
-
   const newAnchor = document.createElement('a');
   newAnchor.href = videoUrl;
   newAnchor.textContent = assetName;
-  const picture = createOptimizedPictureWithAbsoluteUrls(imageUrl);
-  nestedDiv.appendChild(picture);
-  nestedDiv.appendChild(newAnchor);
-  innerDiv.appendChild(nestedDiv);
-  videoDiv.appendChild(innerDiv);
-
+  const picture = createOptimizedPictureWithAbsoluteUrls(posterImageUrl);
+  videoDiv.appendChild(picture);
+  videoDiv.appendChild(newAnchor);
+  
   return videoDiv;
 }
 
