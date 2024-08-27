@@ -188,16 +188,23 @@ export  function decorateDeliveryVideos(main) {
   if (urls.length > 0) {
     urls.forEach( (anchor) => {
       const authorUrl = anchor.href;
-      const altText = anchor.title;
-      const video =  createVideoElement(authorUrl, altText);
+      const options = anchor.title;
+      const video =  createVideoElement(authorUrl, options);
       anchor.parentElement.replaceWith(video);
+      const videoMainDiv = anchor.closest('.video');
+      if(videoMainDiv && options){
+        const videoOptions = options.split(',');
+        videoOptions.forEach((option) => {
+          videoMainDiv.classList.add(option.trim());
+        });
+      }    
     });
   }
 }
 
 
 // Function to convert the existing div structure
- function createVideoElement(authorUrl, altText) {
+ function createVideoElement(authorUrl, options) {
 
   const url = new URL(authorUrl);
   const videoUrl =  deriveDeliveryURL(authorUrl, 'video');
@@ -205,6 +212,7 @@ export  function decorateDeliveryVideos(main) {
   const posterImageUrl =  deriveDeliveryURL(authorUrl, 'poster');
 
   const videoDiv = document.createElement('div');
+  
   const newAnchor = document.createElement('a');
   newAnchor.href = videoUrl;
   newAnchor.textContent = assetName;
