@@ -27,22 +27,16 @@
                     "orientation": "horizontal"
                 },
                 {
-                    "header": "Asset Status",
-                    "groupKey": "AssetStatusGroup",
-                    "fields": [
+                    "element": "radiogroup",
+                    "name": "property",
+                    "defaultValue": [
+                        "dam:assetStatus==approved"
+                    ],
+                    "readOnly": true,
+                    "options": [
                         {
-                            "element": "radiogroup",
-                            "name": "property",
-                            "defaultValue": [
-                                "dam:assetStatus==approved"
-                            ],
-                            "readOnly": true,
-                            "options": [
-                                {
-                                    "label": "Approved",
-                                    "value": "dam:assetStatus==approved"
-                                }
-                            ]
+                            "label": "Approved",
+                            "value": "dam:assetStatus==approved"
                         }
                     ]
                 }
