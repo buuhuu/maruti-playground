@@ -16,6 +16,8 @@ import {
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 const DELIVERY_ASSET_IDENTIFIER = '/adobe/assets/urn:aaid:aem:';
+const DELIVERY_VIDEO_IDENTIFIER = '/play';
+const DELIVERY_IMAGE_IDENTIFIER = '/as/';
 
 /**
  * Moves all the attributes from a given elmenet to another given element.
@@ -167,7 +169,7 @@ function createOptimizedPictureWithAbsoluteUrls(
 export function decorateDeliveryAssets(main) {
   const anchors = Array.from(main.getElementsByTagName('a'));
   const deliveryUrls = anchors.filter((anchor) => anchor.textContent
-    .includes(DELIVERY_ASSET_IDENTIFIER));
+    .includes(DELIVERY_ASSET_IDENTIFIER) && anchor.href.includes(DELIVERY_IMAGE_IDENTIFIER));
   if (deliveryUrls.length > 0) {
     deliveryUrls.forEach((anchor) => {
       const deliveryUrl = anchor.href;
@@ -177,6 +179,52 @@ export function decorateDeliveryAssets(main) {
     });
   }
 }
+
+
+export function decorateDeliveryVideos(main) {
+  const anchors = Array.from(main.getElementsByTagName('a'));
+  const deliveryUrls = anchors.filter((anchor) => anchor.textContent
+    .includes(DELIVERY_ASSET_IDENTIFIER) && anchor.href.includes(DELIVERY_VIDEO_IDENTIFIER));
+  if (deliveryUrls.length > 0) {
+    deliveryUrls.forEach((anchor) => {
+      const deliveryUrl = anchor.href;
+      const altText = anchor.title;
+      const video = createVideoElement(deliveryUrl, altText);
+      anchor.parentElement.parentElement.parentElement.replaceWith(video);
+    });
+  }
+}
+
+
+// Function to convert the existing div structure
+function createVideoElement(deliveryUrl, altText) {
+
+  const url = new URL(deliveryUrl);
+  const videoUrl = `${url.origin}${url.pathname.split('?')[0]}`;
+  const assetName = url.searchParams.get('assetname');
+
+  const imageUrl = deliveryUrl.replace('/play', '/as/poster.jpg').split('?')[0];
+
+  const videoDiv = document.createElement('div');
+  videoDiv.className = 'video';
+
+  const innerDiv = document.createElement('div');
+  const nestedDiv = document.createElement('div');
+
+  const newAnchor = document.createElement('a');
+  newAnchor.href = videoUrl;
+  newAnchor.textContent = assetName;
+  const picture = createOptimizedPictureWithAbsoluteUrls(imageUrl);
+  nestedDiv.appendChild(picture);
+  nestedDiv.appendChild(newAnchor);
+  innerDiv.appendChild(nestedDiv);
+  videoDiv.appendChild(innerDiv);
+
+  return videoDiv;
+}
+
+
+
 
 /**
  * Decorates the main element.
@@ -190,6 +238,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateDeliveryAssets(main);
+  decorateDeliveryVideos(main);
   decorateBlocks(main);
 }
 
