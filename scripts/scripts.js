@@ -181,15 +181,15 @@ export function decorateDeliveryAssets(main) {
 }
 
 
-export function decorateDeliveryVideos(main) {
+export  function decorateDeliveryVideos(main) {
   const anchors = Array.from(main.getElementsByTagName('a'));
   const deliveryUrls = anchors.filter((anchor) => anchor.textContent
     .includes(DELIVERY_ASSET_IDENTIFIER) && anchor.href.includes(DELIVERY_VIDEO_IDENTIFIER));
   if (deliveryUrls.length > 0) {
-    deliveryUrls.forEach((anchor) => {
-      const deliveryUrl = anchor.href;
+    deliveryUrls.forEach( (anchor) => {
+      const authorUrl = anchor.href;
       const altText = anchor.title;
-      const video = createVideoElement(deliveryUrl, altText);
+      const video =  createVideoElement(authorUrl, altText);
       anchor.parentElement.replaceWith(video);
     });
   }
@@ -197,12 +197,12 @@ export function decorateDeliveryVideos(main) {
 
 
 // Function to convert the existing div structure
-function createVideoElement(deliveryUrl, altText) {
+ function createVideoElement(authorUrl, altText) {
 
-  const url = new URL(deliveryUrl);
-  const videoUrl = `${url.origin}${url.pathname.split('?')[0]}`;
+  const url = new URL(authorUrl);
+  const videoUrl =  deriveDeliveryURL(authorUrl, 'video');
   const assetName = url.searchParams.get('assetname');
-  const posterImageUrl = deliveryUrl.replace('/play', '/as/poster.jpg').split('?')[0];
+  const posterImageUrl =  deriveDeliveryURL(authorUrl, 'poster');
 
   const videoDiv = document.createElement('div');
   const newAnchor = document.createElement('a');
@@ -216,6 +216,51 @@ function createVideoElement(deliveryUrl, altText) {
 }
 
 
+/**
+ * Derives the respective Delivery URL for the given asset based on its type.
+ * @param {Object} asset - The asset object to get the respective Delivery URL for.
+ * @param {string} type - The type of asset ('video', 'image', or 'binary').
+ * @param {Object} [rendition] - Optional rendition details for image assets.
+ * @returns {Promise<string|undefined>} Resolves to the respective Delivery URL if successful, otherwise undefined.
+ */
+function deriveDeliveryURL(authorUrl, type) {
+
+  const urlObj = new URL(authorUrl);
+
+  // Extract the domain
+  const authorRepo = urlObj.hostname;
+
+  // Extract the asset ID from the pathname
+  const pathname = urlObj.pathname;
+  const assetIdMatch = pathname.match(/urn:aaid:aem:([a-f0-9\-]+)/);
+  const assetId = assetIdMatch ? assetIdMatch[0] : 'Not found';
+  const assetName = urlObj.searchParams.get('assetname');
+  const urlSuffix = 'adobe/assets';
+  const deliveryRepoId = authorRepo.replace('author', 'delivery');
+  const baseDeliveryURL = `https://${deliveryRepoId}/${urlSuffix}/${assetId}`;
+  const formattedName = assetName.trim().replace(/\s+/g, '-');
+  let deliveryURL = baseDeliveryURL;
+
+  switch (type) {
+    case 'video':
+      deliveryURL += '/play';
+      break;
+    case 'image':
+      deliveryURL += `/original/as/${formattedName}?preferwebp=true`;
+      break;
+    case 'poster':
+      deliveryURL += `/as/${formattedName}.png?width=2000`;
+      break;
+    case 'binary':
+      deliveryURL += `/original/as/${formattedName}`;
+      break;
+    default:
+      console.error('Unsupported asset type:', type);
+      return undefined;
+  }
+
+  return deliveryURL;
+}
 
 
 /**
