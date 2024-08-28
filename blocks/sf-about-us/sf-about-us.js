@@ -21,7 +21,6 @@ function handleContentToggle(content, toggleButton) {
   if (content.textContent.length > maxLength) {
     const originalText = content.textContent;
     const truncatedText = `${originalText.substring(0, maxLength)}...`;
-    // const toggleReadButton = createToggleButton('Read More');
     toggleButton.classList.add('toggle-read-button');
     content.textContent = truncatedText;
     content.appendChild(toggleButton);

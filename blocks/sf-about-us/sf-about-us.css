@@ -1,22 +1,22 @@
 .block.sf-about-us .sf-text-title {
-    margin-bottom: 1.125rem;
+    margin-bottom: var(--space-18px);
     text-align: center;
-    font-size: 1.46rem;
-    font-family: Lato, sans-serif;
+    font-size: var(--heading-font-size-m);
+    font-family: var(--heading-font-family);
     line-height: 1.75rem;
-    color: #164b91;
+    color: var(--heading-blue-color);
     text-transform: uppercase;
-    font-weight: 550;
+    font-weight: var(--font-weight-medium-bold);
 }
 
 .block.sf-about-us .sf-text-subtitle {
-    margin-bottom: 1.125rem;
+    margin-bottom: var(--space-18px);
     text-align: center;
-    font-size: 1.125rem;
-    font-family: Lato, sans-serif;
-    font-weight: 375;
+    font-size: var(--heading-font-size-xs);
+    font-family: var(--heading-font-family);
+    font-weight: var(--font-weight-regular);
     line-height: 1.75rem;
-    color: #164b91;
+    color: var(--heading-blue-color);
     padding: 0 0 0.93rem;
     position: relative;
 }
@@ -27,7 +27,7 @@
     height: 0.0625rem;
     margin: 0 auto;
     content: '';
-    background: #000;
+    background: var(--tertiary-black);;
     bottom: 0;
     left: 0;
     right: 0;
@@ -36,9 +36,9 @@
 .block.sf-about-us .sf-text-content {
     word-wrap: break-word;
     font-size: 1rem;
-    color: #000;
-    font-weight: 300;
-    font-family: Lato, sans-serif;
+    color: var(--tertiary-black);;
+    font-weight: var(--font-weight-small);
+    font-family: var(--body-font-family);
     -webkit-font-smoothing: antialiased;
     line-height: 1.375rem;
     padding: 0 1.875rem;
@@ -49,13 +49,13 @@
 .block.sf-about-us .toggle-read-button {
     display: block;
     width: fit-content;
-    margin: 0.625rem auto 0;
+    margin: var(--space-10px) auto 0;
     padding: 0.3125rem 1rem;
     border-radius: 0.0625rem;
     cursor: pointer;
     text-align: center;
-    background: #164b91;
-    border: 0.0625rem solid #164b91;
+    background: var(--heading-blue-color);
+    border: var(--space-10px) solid var(--heading-blue-color);
     font-size: 0.9rem;
     text-transform: uppercase;
     -webkit-font-smoothing: antialiased;
@@ -64,6 +64,6 @@
 
 .block.sf-about-us .toggle-read-button:hover {
     background-color: #FFF;
-    color: #164b91;
-    border: 0.0625rem solid #164b91;
+    color: var(--heading-blue-color);
+    border: 0.0625rem solid var(--heading-blue-color);
 }
