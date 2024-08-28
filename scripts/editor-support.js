@@ -109,6 +109,21 @@ function handleSelection(event) {
   if (resource) {
     const element = document.querySelector(`[data-aue-resource="${resource}"]`);
     const block = element.parentElement?.closest('.block') || element?.closest('.block');
+    if (detail.prop === 'sf-about-us_ctas_submit') {
+      const container = document.querySelector('.sf-about-us');
+      const content = container.querySelectorAll('p')[1];
+      const toggleButton = container.querySelectorAll('p')[2];
+      const originalText = content.textContent;
+      const truncatedText = `${originalText.substring(0, 339)}...`;
+      if (toggleButton.textContent === 'Read More') {
+        content.textContent = originalText;
+        toggleButton.textContent = 'Read Less';
+      } else {
+        content.textContent = truncatedText;
+        toggleButton.textContent = 'Read More';
+      }
+      content.appendChild(toggleButton);
+    }
     if (block && block.matches('.dynamic-block')) {
       if (block?.dataset.activeRoute) {
         // if the block does some routing we notify it about the new route based on the selection
