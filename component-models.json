@@ -384,5 +384,44 @@
         "label": "Description"
       }
     ]
+  },
+  {
+    "id": "sf-about-us",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "sf-about-us_title",
+        "value": "",
+        "label": "Title",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "sf-about-us_titleType",
+        "value": "h2",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "sf-about-us_sub_title",
+        "value": "",
+        "label": "Sub Title"
+      },
+      {
+        "component": "richtext",
+        "name": "sf-about-us_text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "sf-about-us_ctas_submit",
+        "label": "Read More Button",
+        "required": true
+      }
+    ]
   }
 ]

@@ -61,11 +61,17 @@
   --space-13px: 0.813rem;
   --space-14px: 0.875rem;
   --space-15px: 0.938rem;
+  --space-16px: 1rem;
+  --space-17px: 1.063rem;
+  --space-18px: 1.125rem;
+  --space-19px: 1.188rem;
+  --space-20px: 1.25rem;
 
     /* Font Weight */
     --font-weight-small: 300;
     --font-weight-regular: 400;
     --font-weight-medium: 500;
+    --font-weight-medium-bold: 550;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --font-weight-bolder: 800;

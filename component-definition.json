@@ -234,6 +234,23 @@
               }
             }
           }
+        },
+        {
+          "title": "SmartFinance About Us",
+          "id": "sf-about-us",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "SF About Us",
+                  "model": "sf-about-us",
+                  "filter": "sf-about-us",
+                  "sf-about-us_titleType": "h2"
+                }
+              }
+            }
+          }
         }
       ]
     }
