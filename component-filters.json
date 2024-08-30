@@ -16,7 +16,8 @@
       "text",
       "image",
       "button",
-      "title"
+      "title",
+      "video"
     ]
   },
   {
@@ -32,7 +33,10 @@
       "image-carousel",
       "journey-carousel",
       "image-carousel",
-      "faq"
+      "faq",
+      "journey-carousel",
+      "video"
+
     ]
   },
   {
