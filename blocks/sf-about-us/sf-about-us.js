@@ -33,6 +33,13 @@ function handleContentToggle(content, toggleButton) {
     });
   }
 }
+function handleSelection({ detail: { prop } }) {
+  if (prop === 'sf-about-us_ctas_submit') {
+    const container = document.querySelector('.sf-about-us');
+    const toggleButton = container.querySelectorAll('p')[2];
+    toggleButton.click();
+  }
+}
 
 export default async function decorate(block) {
   const title = block.querySelector('h2');
@@ -42,4 +49,5 @@ export default async function decorate(block) {
 
   addClasses(block, title, subtitle, content);
   handleContentToggle(content, toggleButton);
+  block.addEventListener('navigate-to-route', handleSelection);
 }
