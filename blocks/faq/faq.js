@@ -82,7 +82,6 @@ function createFaqItems(block) {
 }
 
 function addClassesToElements(block) {
-  block.classList.add('dynamic-block');
   block.children[0].classList.add('faq-title');
   block.children[1].classList.add('faq-picture');
   block.children[2].id = 'viewMoreBtn';
@@ -110,30 +109,9 @@ function appendElementsToBlock(block, faqListWrapper) {
   block.appendChild(faqContentRight);
 }
 
-function handleSelection({ detail: { prop, element } }) {
-  if (prop === 'ctas_submit') {
-    const faqItems = document.querySelectorAll('.faq-item');
-    for (let i = 0; i < faqItems.length; i += 1) {
-      faqItems[i].style.display = 'block';
-    }
-    document.getElementById('viewMoreBtn').style.display = 'none';
-  } else {
-    // close all details
-    document.querySelectorAll('details').forEach((details) => {
-      details.open = false;
-    });
-    const details = element.matches('details') ? element : element.querySelector('details');
-    if (details) {
-      details.open = true;
-    }
-  }
-}
-
 export default function decorate(block) {
   addClassesToElements(block);
   const faqListWrapper = createFaqItems(block);
   appendElementsToBlock(block, faqListWrapper);
   decorateButton(block.querySelector('.view-more-faq'));
-  block.addEventListener('navigate-to-route', handleSelection);
-  block.addEventListener('apply-update', handleContentUpdate);
 }
