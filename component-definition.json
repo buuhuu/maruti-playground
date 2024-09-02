@@ -245,7 +245,6 @@
                 "template": {
                   "name": "FAQ",
                   "model": "faq",
-                  "classes": "dynamic-block",
                   "filter": "faq",
                   "faq_title": "Frequently asked questions",
                   "faq_titleType": "h2"
