@@ -148,7 +148,7 @@ function handleSelection(event) {
         block.dispatchEvent(new CustomEvent('navigate-to-route', { detail: { prop: detail.prop, element } }));
       }
     }
-    if (block && block.matches('.accordion')) {
+    if (block && block.matches('.faq')) {
       if (detail.prop === 'ctas_submit') {
         const faqItems = document.querySelectorAll('.faq-item');
         for (let i = 0; i < faqItems.length; i += 1) {
