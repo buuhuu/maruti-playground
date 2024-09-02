@@ -147,12 +147,22 @@ function handleSelection(event) {
       } else {
         block.dispatchEvent(new CustomEvent('navigate-to-route', { detail: { prop: detail.prop, element } }));
       }
-    } else if (detail.prop === 'ctas_submit') {
-      const faqItems = document.querySelectorAll('.faq-item');
-      for (let i = 0; i < faqItems.length; i += 1) {
-        faqItems[i].style.display = 'block';
+    }
+    if (block && block.matches('.accordion')) {
+      if (detail.prop === 'ctas_submit') {
+        const faqItems = document.querySelectorAll('.faq-item');
+        for (let i = 0; i < faqItems.length; i += 1) {
+          faqItems[i].style.display = 'block';
+        }
+        document.getElementById('viewMoreBtn').style.display = 'none';
+      } else {
+        // close all details
+        block.querySelectorAll('details').forEach((details) => {
+          details.open = false;
+        });
+        const details = element.matches('details') ? element : element.querySelector('details');
+        details.open = true;
       }
-      document.getElementById('viewMoreBtn').style.display = 'none';
     }
   }
 }
