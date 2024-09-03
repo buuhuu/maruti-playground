@@ -33,12 +33,7 @@ function handleSelection({ detail: { prop } }) {
 
 export default async function decorate(block) {
   const faqBlock = [...block.children].map((child) => {
-    const [
-      titleEl,
-      subtitleEl,
-      contentEl,
-      toggleButtonEl,
-    ] = [...child.children];
+    const [titleEl, subtitleEl, contentEl, toggleButtonEl] = [...child.children[0].children];
 
     const title = titleEl?.textContent?.trim();
     const subtitle = subtitleEl?.textContent?.trim();
