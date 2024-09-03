@@ -42,11 +42,7 @@ function handleSelection({ detail: { prop } }) {
 }
 
 export default async function decorate(block) {
-  const title = block.querySelector('h2');
-  const subtitle = block.querySelectorAll('p')[0];
-  const content = block.querySelectorAll('p')[1];
-  const toggleButton = block.querySelectorAll('p')[2];
-
+  const [title, subtitle, content, toggleButton] = [...block.children];
   addClasses(block, title, subtitle, content);
   handleContentToggle(content, toggleButton);
   block.addEventListener('navigate-to-route', handleSelection);
