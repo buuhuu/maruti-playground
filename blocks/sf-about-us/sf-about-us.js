@@ -49,7 +49,7 @@ export default async function decorate(block) {
 <p class="sf-text-content">${content}<p class="toggle-read-button">${toggleButton}</p></p>
         `),
     );
-    handleContentToggle(content, toggleButton);
+    handleContentToggle(contentEl, toggleButtonEl);
     return child.outerHTML;
   }).join('');
   block.innerHTML = '';
