@@ -1,16 +1,6 @@
-const maxLength = 339;
+import utility from '../../utility/utility.js';
 
-function addClasses(block, title, subtitle, content) {
-  if (title) {
-    title.classList.add('sf-text-title');
-  }
-  if (subtitle) {
-    subtitle.classList.add('sf-text-subtitle');
-  }
-  if (content) {
-    content.classList.add('sf-text-content');
-  }
-}
+const maxLength = 339;
 
 function handleContentToggle(content, toggleButton) {
   if (content.textContent.length > maxLength) {
@@ -42,9 +32,32 @@ function handleSelection({ detail: { prop } }) {
 }
 
 export default async function decorate(block) {
-  const innerDiv = block.children[0].children[0];
-  const [title, subtitle, content, toggleButton] = innerDiv.children;
-  addClasses(block, title, subtitle, content);
-  handleContentToggle(content, toggleButton);
+  const faqBlock = [...block.children].map((child) => {
+    const [
+      titleEl,
+      subtitleEl,
+      contentEl,
+      toggleButtonEl,
+    ] = child.children;
+
+    const title = titleEl?.textContent?.trim();
+    const subtitle = subtitleEl?.textContent?.trim();
+    const content = contentEl?.textContent?.trim();
+    const toggleButton = toggleButtonEl?.textContent?.trim();
+
+    child.innerHTML = '';
+    child.insertAdjacentHTML(
+      'beforeend',
+      utility.sanitizeHtml(`
+          <h2 id="maruti-suzuki-smart-finance" class="sf-text-title">${title}</h2>
+<p class="sf-text-subtitle">${subtitle}</p>
+<p class="sf-text-content">${content}<p class="toggle-read-button">${toggleButton}</p></p>
+        `),
+    );
+    handleContentToggle(content, toggleButton);
+    return child.outerHTML;
+  }).join('');
+  block.innerHTML = '';
+  block.insertAdjacentHTML('beforeend', utility.sanitizeHtml(faqBlock));
   block.addEventListener('navigate-to-route', handleSelection);
 }
