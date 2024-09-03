@@ -42,7 +42,7 @@ function handleSelection({ detail: { prop } }) {
 }
 
 export default async function decorate(block) {
-  const [title, subtitle, content, toggleButton] = [...block.children];
+  const [title, subtitle, content, toggleButton] = [...block.children[0]];
   addClasses(block, title, subtitle, content);
   handleContentToggle(content, toggleButton);
   block.addEventListener('navigate-to-route', handleSelection);
