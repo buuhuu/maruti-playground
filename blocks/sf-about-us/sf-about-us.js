@@ -40,15 +40,30 @@ export default async function decorate(block) {
     const content = contentEl?.textContent?.trim();
     const toggleButton = toggleButtonEl?.textContent?.trim();
 
+    const fullText = contentEl.textContent;
+    const truncatedText = `${fullText.substring(0, maxLength)}...`;
+
+    // Initially show truncated text
+    contentEl.textContent = truncatedText;
     child.innerHTML = '';
     child.insertAdjacentHTML(
       'beforeend',
       utility.sanitizeHtml(`
           <h2 id="maruti-suzuki-smart-finance" class="sf-text-title">${title}</h2>
 <p class="sf-text-subtitle">${subtitle}</p>
-<p class="sf-text-content">${content}<p class="toggle-read-button">${toggleButton}</p></p>
+<p class="sf-text-content">${content}</p>
+<p class="toggle-read-button">${toggleButton}</p>
         `),
     );
+    toggleButtonEl.addEventListener('click', () => {
+      if (toggleButtonEl.textContent === 'Read More') {
+        contentEl.textContent = fullText;
+        toggleButtonEl.textContent = 'Read Less';
+      } else {
+        contentEl.textContent = truncatedText;
+        toggleButtonEl.textContent = 'Read More';
+      }
+    });
     //handleContentToggle(contentEl, toggleButtonEl);
     return child.outerHTML;
   }).join('');
