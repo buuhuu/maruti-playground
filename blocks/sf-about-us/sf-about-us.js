@@ -38,7 +38,7 @@ export default async function decorate(block) {
       subtitleEl,
       contentEl,
       toggleButtonEl,
-    ] = child.children;
+    ] = [...child.children];
 
     const title = titleEl?.textContent?.trim();
     const subtitle = subtitleEl?.textContent?.trim();
