@@ -23,18 +23,23 @@ export default async function decorate(block) {
       const toggleButton = toggleButtonEl?.textContent?.trim();
 
       fullText = contentEl.textContent;
-      truncatedText = `${fullText.substring(0, maxLength)}...`;
-
+      if (contentEl.classList.contains('data-aue-filter')) {
+        truncatedText = fullText;
+      } else {
+        truncatedText = `${fullText.substring(0, maxLength)}...`;
+      }
       // Initially show truncated text
       contentEl.textContent = truncatedText;
       child.innerHTML = '';
       child.insertAdjacentHTML(
         'beforeend',
         utility.sanitizeHtml(`
-          <h2 id="maruti-suzuki-smart-finance-title" class="sf-text-title">${title}</h2>
-<p class="sf-text-subtitle">${subtitle}</p>
-<p class="sf-text-content">${truncatedText}</p>
-<p class="toggle-read-button">${toggleButton}</p>
+          <div>
+           <h2 id="maruti-suzuki-smart-finance-title" class="sf-text-title">${title}</h2>
+           <p class="sf-text-subtitle">${subtitle}</p>
+           <p class="sf-text-content">${truncatedText}</p>
+           <p class="toggle-read-button">${toggleButton}</p>
+          </div>
         `),
       );
       return child.outerHTML;
