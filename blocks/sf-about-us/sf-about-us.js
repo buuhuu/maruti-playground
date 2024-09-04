@@ -13,6 +13,7 @@ function handleSelection({ detail: { prop } }) {
 export default async function decorate(block) {
   let fullText = '';
   let truncatedText = '';
+  let displayText = '';
 
   function updateHtml() {
     const faqBlock = [...block.children].map((child) => {
@@ -23,14 +24,14 @@ export default async function decorate(block) {
       const toggleButton = toggleButtonEl?.textContent?.trim();
 
       fullText = contentEl.textContent;
+      truncatedText = `${fullText.substring(0, maxLength)}...`;
       if (document.querySelectorAll('.adobe-ue-edit .block.sf-about-us').length > 0) {
         // In edit mode, show full text
-        truncatedText = fullText;
+        displayText = fullText;
       } else {
-        truncatedText = `${fullText.substring(0, maxLength)}...`;
+        displayText = `${fullText.substring(0, maxLength)}...`;
       }
       // Initially show truncated text
-      contentEl.textContent = truncatedText;
       child.innerHTML = '';
       child.insertAdjacentHTML(
         'beforeend',
@@ -38,7 +39,7 @@ export default async function decorate(block) {
           <div>
            <h2 id="maruti-suzuki-smart-finance-title" class="sf-text-title">${title}</h2>
            <p class="sf-text-subtitle">${subtitle}</p>
-           <p class="sf-text-content">${truncatedText}</p>
+           <p class="sf-text-content">${displayText}</p>
            <p class="toggle-read-button">${toggleButton}</p>
           </div>
         `),
