@@ -23,7 +23,7 @@ export default async function decorate(block) {
       const toggleButton = toggleButtonEl?.textContent?.trim();
 
       fullText = contentEl.textContent;
-      if (contentEl.classList.contains('data-aue-filter')) {
+      if (contentEl.attributes.contains('data-aue-prop')) {
         truncatedText = fullText;
       } else {
         truncatedText = `${fullText.substring(0, maxLength)}...`;
