@@ -55,7 +55,7 @@
     cursor: pointer;
     text-align: center;
     background: var(--heading-blue-color);
-    border: var(--space-10px) solid var(--heading-blue-color);
+    border: 0.0625rem solid var(--heading-blue-color);
     font-size: 0.9rem;
     text-transform: uppercase;
     -webkit-font-smoothing: antialiased;
