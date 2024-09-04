@@ -15,7 +15,7 @@ export default async function decorate(block) {
       const subtitle = subtitleEl?.textContent?.trim();
       const toggleButton = toggleButtonEl?.textContent?.trim();
 
-      fullText = contentEl.textContent;
+      fullText = contentEl.innerText;
       truncatedText = `${fullText.substring(0, maxLength)}...`;
       if (document.querySelectorAll('.adobe-ue-edit .block.sf-about-us').length > 0) {
         // In edit mode, show full text
@@ -46,10 +46,10 @@ export default async function decorate(block) {
     const toggleButtonEl = document.querySelector('.toggle-read-button');
     toggleButtonEl.addEventListener('click', () => {
       if (toggleButtonEl.textContent === 'Read More') {
-        contentEl.textContent = fullText;
+        contentEl.innerText = fullText;
         toggleButtonEl.textContent = 'Read Less';
       } else {
-        contentEl.textContent = truncatedText;
+        contentEl.innerText = truncatedText;
         toggleButtonEl.textContent = 'Read More';
       }
     });
