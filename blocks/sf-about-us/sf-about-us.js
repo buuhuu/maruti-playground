@@ -23,7 +23,8 @@ export default async function decorate(block) {
       const toggleButton = toggleButtonEl?.textContent?.trim();
 
       fullText = contentEl.textContent;
-      if (contentEl.attributes.contains('data-aue-prop')) {
+      if (document.querySelectorAll('.adobe-ue-edit .block.sf-about-us').length > 0) {
+        // In edit mode, show full text
         truncatedText = fullText;
       } else {
         truncatedText = `${fullText.substring(0, maxLength)}...`;
