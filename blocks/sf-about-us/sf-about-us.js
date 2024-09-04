@@ -19,9 +19,9 @@ export default async function decorate(block) {
       truncatedText = `${fullText.substring(0, maxLength)}...`;
       if (document.querySelectorAll('.adobe-ue-edit .block.sf-about-us').length > 0) {
         // In edit mode, show full text
-        displayText = fullText;
+        displayText = fullText.replace(/<\/?p>/gi, '');
       } else {
-        displayText = `${fullText.substring(0, maxLength)}...`;
+        displayText = `${fullText.substring(0, maxLength)}...`.replace(/<\/?p>/gi, '');
       }
       child.innerHTML = '';
       child.insertAdjacentHTML(
