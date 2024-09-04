@@ -2,14 +2,6 @@ import utility from '../../utility/utility.js';
 
 const maxLength = 339;
 
-function handleSelection({ detail: { prop } }) {
-  if (prop === 'sf-about-us_ctas_submit') {
-    const container = document.querySelector('.sf-about-us');
-    const toggleButton = container.querySelectorAll('p')[2];
-    toggleButton.click();
-  }
-}
-
 export default async function decorate(block) {
   let fullText = '';
   let truncatedText = '';
@@ -31,7 +23,6 @@ export default async function decorate(block) {
       } else {
         displayText = `${fullText.substring(0, maxLength)}...`;
       }
-      // Initially show truncated text
       child.innerHTML = '';
       child.insertAdjacentHTML(
         'beforeend',
@@ -48,7 +39,6 @@ export default async function decorate(block) {
     }).join('');
     block.innerHTML = '';
     block.insertAdjacentHTML('beforeend', utility.sanitizeHtml(faqBlock));
-    block.addEventListener('navigate-to-route', handleSelection);
   }
 
   function initializeEventListeners() {
