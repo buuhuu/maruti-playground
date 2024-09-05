@@ -1,3 +1,7 @@
+.section.sf-about-us-container {
+    padding: 2.187rem 0.937rem;
+}
+
 .block.sf-about-us .sf-text-title {
     margin-bottom: var(--space-18px);
     text-align: center;
@@ -66,4 +70,16 @@
     background-color: #FFF;
     color: var(--heading-blue-color);
     border: 0.0625rem solid var(--heading-blue-color);
+}
+
+@media (width >= 768px) {
+    .section.sf-about-us-container {
+        padding: 2.187rem 0;
+    }
+}
+
+@media (width >= 900px) {
+    .section > div {
+        max-width: 1170px;
+    }
 }
