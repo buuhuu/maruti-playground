@@ -8,6 +8,7 @@
     ],
     "aem:tier":"author",
     "videoResponseType" : "html",
+    "deliveryDomain": "assets-dev.marutisuzuki.com",
     "copyMode": [
         {
         "value": "reference"
