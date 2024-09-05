@@ -12,7 +12,7 @@
     "deliveryDomain": "assets-dev.marutisuzuki.com",
     "copyMode": [
     {
-        "value": "use-alt-text"
+        "value": "reference"
     }
 ],
     "filterSchema": [

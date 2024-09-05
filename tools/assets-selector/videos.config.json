@@ -10,7 +10,7 @@
     "videoResponseType" : "html",
     "copyMode": [
         {
-        "value": "use-alt-text"
+        "value": "reference"
         }
     ],
     "filterSchema": [
