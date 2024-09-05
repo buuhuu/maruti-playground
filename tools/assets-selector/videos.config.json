@@ -8,6 +8,11 @@
     ],
     "aem:tier":"author",
     "videoResponseType" : "html",
+    "copyMode": [
+        {
+        "value": "use-alt-text"
+        }
+    ],
     "filterSchema": [
         {
             "fields": [
