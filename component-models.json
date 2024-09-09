@@ -68,7 +68,7 @@
     "fields": [
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "/content/dam/image.config.json",
+        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpicker/tools/assets-selector/image.config.json",
         "valueType": "string",
         "name": "image_desktop",
         "label": "Image Desktop",
@@ -76,7 +76,7 @@
       },
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpickerVideo/tools/assets-selector/image.config.json",
+        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpicker/tools/assets-selector/image.config.json",
         "valueType": "string",
         "name": "image_mobile",
         "label": "Image (mobile)",
@@ -397,7 +397,7 @@
         "component": "custom-asset-namespace:custom-asset",
         "name": "video",
         "label": "Video",
-        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpickerVideo/tools/assets-selector/videos.config.json",
+        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpicker/tools/assets-selector/videos.config.json",
         "valueType": "string"
       },
       {
@@ -407,14 +407,6 @@
         "value": "",
         "label": "Options",
         "options": [
-          {
-            "name": "Muted",
-            "value": "muted"
-          },
-          {
-            "name": "Loop",
-            "value": "loop"
-          },
           {
             "name": "Hero",
             "value": "hero"
@@ -426,10 +418,6 @@
           {
             "name": "Autoplay",
             "value": "autoplay"
-          },
-          {
-            "name": "Controls",
-            "value": "controls"
           }
         ]
       }

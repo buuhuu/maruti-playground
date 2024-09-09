@@ -162,55 +162,17 @@ function createOptimizedPictureWithAbsoluteUrls(
   return picture;
 }
 
-function deriveDeliveryURL(authorUrl, type) {
-  const urlObj = new URL(authorUrl);
-
-  // Extract the domain
-  const authorRepo = urlObj.hostname;
-
-  // Extract the asset ID from the pathname
-  const { pathname } = urlObj;
-  const assetIdMatch = pathname.match(/urn:aaid:aem:([a-f0-9-]+)/);
-  const assetId = assetIdMatch ? assetIdMatch[0] : 'Not found';
-  const assetName = urlObj.searchParams.get('assetname');
-  const urlSuffix = 'adobe/assets';
-  const deliveryRepoId = authorRepo.replace('author', 'delivery');
-  const baseDeliveryURL = `https://${deliveryRepoId}/${urlSuffix}/${assetId}`;
-  const formattedName = assetName.trim().replace(/\s+/g, '-');
-  let deliveryURL = baseDeliveryURL;
-
-  switch (type) {
-    case 'video':
-      deliveryURL += '/play';
-      break;
-    case 'image':
-      deliveryURL += `/original/as/${formattedName}?preferwebp=true`;
-      break;
-    case 'poster':
-      deliveryURL += `/as/${formattedName}.png?width=2000`;
-      break;
-    case 'binary':
-      deliveryURL += `/original/as/${formattedName}`;
-      break;
-    default:
-      console.error('Unsupported asset type:', type);
-      return undefined;
-  }
-
-  return deliveryURL;
-}
-
 /**
  * Decorates delivery assets by replacing anchor elements with optimized pictures.
  * @param {HTMLElement} main - The main element containing the anchor elements.
  */
 export function decorateDeliveryImages(main) {
   const anchors = Array.from(main.getElementsByTagName('a'));
-  const urls = anchors.filter((anchor) => anchor.textContent
+  const deliveryUrls = anchors.filter((anchor) => anchor.href
     .includes(DELIVERY_ASSET_IDENTIFIER) && anchor.href.includes(DELIVERY_IMAGE_IDENTIFIER));
-  if (urls.length > 0) {
-    urls.forEach((anchor) => {
-      const deliveryUrl = deriveDeliveryURL(anchor.href, 'image');
+  if (deliveryUrls.length > 0) {
+    deliveryUrls.forEach((anchor) => {
+      const deliveryUrl = anchor.href;
       const altText = anchor.title;
       const picture = createOptimizedPictureWithAbsoluteUrls(deliveryUrl, altText);
       anchor.replaceWith(picture);
@@ -219,14 +181,12 @@ export function decorateDeliveryImages(main) {
 }
 
 // Function to convert the existing div structure
-function createVideoElement(authorUrl) {
-  const url = new URL(authorUrl);
-  const videoUrl = deriveDeliveryURL(authorUrl, 'video');
+export function createVideoElement(deliveryUrl) {
+  const url = new URL(deliveryUrl);
+  const videoUrl = `${url.origin}${url.pathname.split('?')[0]}`;
   const assetName = url.searchParams.get('assetname');
-  const posterImageUrl = deriveDeliveryURL(authorUrl, 'poster');
-
+  const posterImageUrl = deliveryUrl.replace('/play', '/as/poster.jpg').split('?')[0];
   const videoDiv = document.createElement('div');
-
   const newAnchor = document.createElement('a');
   newAnchor.href = videoUrl;
   newAnchor.textContent = assetName;
@@ -239,14 +199,14 @@ function createVideoElement(authorUrl) {
 
 export function decorateDeliveryVideos(main) {
   const anchors = Array.from(main.getElementsByTagName('a'));
-  const urls = anchors.filter((anchor) => anchor.textContent
+  const urls = anchors.filter((anchor) => anchor.href
     .includes(DELIVERY_ASSET_IDENTIFIER) && anchor.href.includes(DELIVERY_VIDEO_IDENTIFIER));
   if (urls.length > 0) {
     urls.forEach((anchor) => {
       const authorUrl = anchor.href;
       const options = anchor.title;
       const video = createVideoElement(authorUrl);
-      anchor.parentElement.replaceWith(video);
+
       const videoMainDiv = anchor.closest('.video');
       if (videoMainDiv && options) {
         const videoOptions = options.split(',');
@@ -254,6 +214,7 @@ export function decorateDeliveryVideos(main) {
           videoMainDiv.classList.add(option.trim());
         });
       }
+      anchor.parentElement.replaceWith(video);
     });
   }
 }
