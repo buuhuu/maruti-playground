@@ -48,6 +48,13 @@
     padding: 0 1.875rem;
     position: relative;
     text-align: left;
+    overflow: hidden;
+    max-height: 50px; /* Adjust this value as needed */
+    transition: max-height 0.3s ease;
+}
+
+.sf-text-content.expanded {
+    max-height: 500px; /* Adjust this value as needed */
 }
 
 .block.sf-about-us .toggle-read-button {
