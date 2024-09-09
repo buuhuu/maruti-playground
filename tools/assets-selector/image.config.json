@@ -15,7 +15,8 @@
     }
 ],
     "filterSchema": [
-        {
+        {   "header": "File Type",
+            "groupKey": "FileTypeGroup",
             "fields": [
                 {
                     "element": "checkbox",
@@ -31,24 +32,30 @@
                         }
                     ],
                     "orientation": "horizontal"
-                },
-                {
-                    "element": "radiogroup",
-                    "name": "property",
-                    "defaultValue": [
-                        "dam:assetStatus==approved"
-                    ],
-                    "readOnly": true,
-                    "options": [
-                        {
-                            "label": "Approved",
-                            "value": "dam:assetStatus==approved"
-                        }
-                    ]
                 }
-            ],
-            "header": "File Type",
-            "groupKey": "FileTypeGroup"
-        }
+            ]
+            
+        },
+        {   
+        "header": "Asset Status",
+        "groupKey": "FileTypeGroup",
+        "fields": [
+            {
+                "element": "radiogroup",
+                "name": "property",
+                "defaultValue": [
+                    "dam:assetStatus==approved"
+                ],
+                "readOnly": true,
+                "options": [
+                    {
+                        "label": "Approved",
+                        "value": "dam:assetStatus==approved"
+                    }
+                ]
+            }
+        ]
+        
+    }
     ]
 }
