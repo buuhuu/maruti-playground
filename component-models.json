@@ -68,15 +68,16 @@
     "fields": [
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpicker/tools/assets-selector/image.config.json",
+        "configUrl": "/content/dam/image.config.json",
         "valueType": "string",
         "name": "image_desktop",
         "label": "Image Desktop",
-        "multi": false
+        "multi": false,
+        "assetType": "image"
       },
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpicker/tools/assets-selector/image.config.json",
+        "configUrl": "/content/dam/image.config.json",
         "valueType": "string",
         "name": "image_mobile",
         "label": "Image (mobile)",
@@ -397,7 +398,7 @@
         "component": "custom-asset-namespace:custom-asset",
         "name": "video",
         "label": "Video",
-        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpicker/tools/assets-selector/videos.config.json",
+        "configUrl": "/content/dam/videos.config.json",
         "valueType": "string"
       },
       {
