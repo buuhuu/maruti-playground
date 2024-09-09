@@ -31,7 +31,6 @@ export default async function decorate(block) {
     const contentEl = document.querySelector('.sf-text-content');
     const toggleButtonEl = document.querySelector('.toggle-read-button');
     toggleButtonEl.addEventListener('click', () => {
-
       if (contentEl.classList.contains('expanded')) {
         contentEl.classList.remove('expanded');
         toggleButtonEl.textContent = 'Read more';
