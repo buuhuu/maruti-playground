@@ -80,6 +80,7 @@
         "valueType": "string",
         "name": "image_mobile",
         "label": "Image (mobile)",
+        "assetType": image,
         "multi": false
       },
       {
