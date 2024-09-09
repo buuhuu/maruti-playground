@@ -49,12 +49,13 @@
     position: relative;
     text-align: left;
     overflow: hidden;
-    max-height: 50px; /* Adjust this value as needed */
+    max-height: 7rem;
     transition: max-height 0.3s ease;
 }
 
-.sf-text-content.expanded {
-    max-height: 500px; /* Adjust this value as needed */
+.block.sf-about-us .sf-text-content.expanded,
+.adobe-ue-edit .block.sf-about-us .sf-text-content {
+    max-height: 100rem;
 }
 
 .block.sf-about-us .toggle-read-button {
