@@ -9,33 +9,10 @@
     "rootPath":"/content/dam/maruti-carousel",
     "aem:tier":"author",
     "videoResponseType" : "html",
-    "copyMode": [
-    {
-        "value": "reference"
-    }
-],
+     "repositories": [
+        "delivery-p130360-e1403848.adobeaemcloud.com"
+    ],
     "filterSchema": [
-        {   "header": "File Type",
-            "groupKey": "FileTypeGroup",
-            "fields": [
-                {
-                    "element": "checkbox",
-                    "name": "type",
-                    "defaultValue": [
-                        "image/*"
-                    ],
-                    "options": [
-                        {
-                            "label": "Image",
-                            "value": "image/*",
-                            "readOnly": true
-                        }
-                    ],
-                    "orientation": "horizontal"
-                }
-            ]
-            
-        },
         {   
         "header": "Asset Status",
         "groupKey": "FileTypeGroup",
