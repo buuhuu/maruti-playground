@@ -68,7 +68,7 @@
     "fields": [
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "/content/dam/image.config.json",
+        "configUrl": "https://290622-assetpickerconfig-stage.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
         "valueType": "string",
         "name": "image_desktop",
         "label": "Image Desktop",
@@ -77,11 +77,12 @@
       },
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "/content/dam/image.config.json",
+        "configUrl": "https://290622-assetpickerconfig-stage.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
         "valueType": "string",
         "name": "image_mobile",
         "label": "Image (mobile)",
-        "multi": false
+        "multi": false,
+        "assetType": "image"
       },
       {
         "component": "text",
@@ -398,8 +399,9 @@
         "component": "custom-asset-namespace:custom-asset",
         "name": "video",
         "label": "Video",
-        "configUrl": "/content/dam/videos.config.json",
-        "valueType": "string"
+        "configUrl": "https://290622-assetpickerconfig-stage.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
+        "valueType": "string",
+        "assetType":"video"
       },
       {
         "component": "multiselect",
