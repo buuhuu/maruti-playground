@@ -10,7 +10,8 @@
     "aem:tier":"author",
     "videoResponseType" : "html",
      "repositories": [
-        "delivery-p130360-e1403848.adobeaemcloud.com"
+        "delivery-p130360-e1403848.adobeaemcloud.com",
+    prodDomain="assets.maruti.com";
     ],
     "filterSchema": [
         {   
