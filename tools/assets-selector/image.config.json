@@ -6,7 +6,7 @@
     "repoNames": [
         "author-p130360-e1403848.adobeaemcloud.com"
     ],
-    "rootPath":"/content/dam/maruti-carousel",
+    "rootPath":"/content/dam/",
     "aem:tier":"author",
     "videoResponseType" : "html",
      "repositories": [
