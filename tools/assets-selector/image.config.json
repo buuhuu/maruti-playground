@@ -8,22 +8,23 @@
         {
             "fields": [
                 {
+                    "element": "checkbox",
+                    "name": "type",
                     "defaultValue": [
                         "image/*"
                     ],
-                    "element": "checkbox",
-                    "name": "type",
                     "options": [
                         {
                             "label": "Image",
-                            "readOnly": true,
-                            "value": "image/*"
+                            "value": "image/*",
+                            "readOnly": true
                         }
-                    ]
+                    ],
+                    "orientation": "horizontal"
                 }
             ],
-            "groupKey": "FileTypeGroup",
-            "header": "File Type"
+            "header": "File Type",
+            "groupKey": "FileTypeGroup"
         },
         {
             "fields": [
