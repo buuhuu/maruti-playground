@@ -404,6 +404,11 @@
         "assetType":"video"
       },
       {
+        "component": "custom-asset-namespace:custom-video-poster-src",
+        "name": "videoPosterSrc",
+        "valueType": "string"
+      },
+      {
         "component": "multiselect",
         "valueType": "string",
         "name": "videoTitle",
