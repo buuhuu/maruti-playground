@@ -4,6 +4,13 @@
         "author"
     ],
     "apiKey": "asset_search_service",
+    "repoNames": [
+        "author-p130360-e1403848.adobeaemcloud.com"
+    ],
+    "repositories": [
+        "delivery-p130360-e1403848.adobeaemcloud.com"
+    ],
+    "videoResponseType": "html",
     "filterSchema": [
         {
             "fields": [
@@ -25,33 +32,7 @@
             ],
             "header": "File Type",
             "groupKey": "FileTypeGroup"
-        },
-        {
-            "fields": [
-                {
-                    "defaultValue": [
-                        "dam:assetStatus==approved"
-                    ],
-                    "element": "radiogroup",
-                    "name": "property",
-                    "options": [
-                        {
-                            "label": "Approved",
-                            "value": "dam:assetStatus==approved"
-                        }
-                    ],
-                    "readOnly": true
-                }
-            ],
-            "groupKey": "StatusGroup",
-            "header": "Approval Status"
         }
-    ],
-    "repoNames": [
-        "author-p130360-e1403848.adobeaemcloud.com"
-    ],
-    "repositories": [
-        "delivery-p130360-e1403848.adobeaemcloud.com"
-    ],
-    "videoResponseType": "html"
+    ]
+    
 }
