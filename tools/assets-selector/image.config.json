@@ -1,39 +1,56 @@
 {
-    "aemTierType": [
-        "author"
-    ],
-    "apiKey": "asset_search_service",
-    "repoNames": [
-        "author-p130360-e1403848.adobeaemcloud.com"
-    ],
-    "rootPath":"/content/dam/",
-    "aem:tier":"author",
-    "videoResponseType" : "html",
-     "repositories": [
-        "delivery-p130360-e1403848.adobeaemcloud.com"
-    ],
-    "prodDomain" :"assets.maruti.com",
-    "filterSchema": [
-        {   
-        "header": "Asset Status",
-        "groupKey": "FileTypeGroup",
-        "fields": [
-            {
-                "element": "radiogroup",
-                "name": "property",
-                "defaultValue": [
-                    "dam:assetStatus==approved"
-                ],
-                "readOnly": true,
-                "options": [
-                    {
-                        "label": "Approved",
-                        "value": "dam:assetStatus==approved"
-                    }
-                ]
-            }
-        ]
-        
-    }
-    ]
+"aem:tier": "author",
+"aemTierType": [
+"author"
+],
+"apiKey": "asset_search_service",
+"filterSchema": [
+{
+"fields": [
+{
+"defaultValue": [
+"image/*"
+],
+"element": "checkbox",
+"name": "type",
+"options": [
+{
+"label": "Image",
+"readOnly": true,
+"value": "image/*"
+}
+]
+}
+],
+"groupKey": "FileTypeGroup",
+"header": "File Type"
+},
+{
+"fields": [
+{
+"defaultValue": [
+"dam:assetStatus==approved"
+],
+"element": "radiogroup",
+"name": "property",
+"options": [
+{
+"label": "Approved",
+"value": "dam:assetStatus==approved"
+}
+],
+"readOnly": true
+}
+],
+"groupKey": "StatusGroup",
+"header": "Approval Status"
+}
+],
+"repoNames": [
+"author-p130360-e1403848.adobeaemcloud.com"
+],
+"repositories": [
+"delivery-p130360-e1403848.adobeaemcloud.com"
+],
+"videoResponseType": "html"
 }
