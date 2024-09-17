@@ -68,7 +68,7 @@
     "fields": [
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://290622-assetpickerconfig-stage.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
+        "configUrl": "/assetpicker-config",
         "valueType": "string",
         "name": "image_desktop",
         "label": "Image Desktop",
@@ -77,7 +77,7 @@
       },
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://290622-assetpickerconfig-stage.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
+        "configUrl": "/assetpicker-config",
         "valueType": "string",
         "name": "image_mobile",
         "label": "Image (mobile)",
@@ -399,7 +399,7 @@
         "component": "custom-asset-namespace:custom-asset",
         "name": "video",
         "label": "Video",
-        "configUrl": "https://290622-assetpickerconfig-stage.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
+        "configUrl": "/assetpicker-config",
         "valueType": "string",
         "assetType":"video"
       },
