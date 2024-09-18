@@ -409,6 +409,11 @@
         "valueType": "string"
       },
       {
+        "component": "custom-asset-namespace:custom-video-asset-name",
+        "name": "videoName",
+        "valueType": "string"
+      },
+      {
         "component": "multiselect",
         "valueType": "string",
         "name": "videoTitle",
