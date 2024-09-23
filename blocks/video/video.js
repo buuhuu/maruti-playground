@@ -56,7 +56,7 @@ function parseConfig(block) {
     };
   }
 
-  const videoUrl = block.querySelector('div:first-child a').href;
+  const videoUrl = block.querySelector('div:first-child a')?.href;
   const posterImage = block.querySelector('picture');
 
   return {
@@ -423,7 +423,7 @@ async function decorateVideoModal(block, config) {
   const container = document.createElement('div');
   container.classList.add('video-component');
 
-  const posterImage = config.posterImage.cloneNode(true);
+  const posterImage = config.posterImage?.cloneNode(true);
   const playButton = document.createElement('button');
   playButton.setAttribute('aria-label', 'Play video');
   playButton.classList.add('video-play-button');
