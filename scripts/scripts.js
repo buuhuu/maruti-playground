@@ -203,10 +203,9 @@ export function decorateDeliveryVideos(main) {
       const videoUrl = anchor.href;
       const options = anchor.title;
       const videoMainDiv = anchor.closest('.video');
-      const posterUrlAnchor = videoMainDiv.children[1].querySelector('a');
+      const posterUrlAnchor = videoMainDiv.querySelector('div p:nth-of-type(2) a');
       const posterImageUrl = posterUrlAnchor ? posterUrlAnchor.href : '';
-      const videoNameDiv = videoMainDiv.children[2];
-      const videoName = videoNameDiv ? videoNameDiv.textContent.trim() : '';
+      const videoName = anchor.textContent.trim();
       const video = createVideoElement(videoUrl, posterImageUrl, videoName);
       if (videoMainDiv && options) {
         const videoOptions = options.split(',');
