@@ -410,7 +410,7 @@
       },
       {
         "component": "custom-asset-namespace:custom-video-asset-name",
-        "name": "video_linkName",
+        "name": "video_linkText",
         "valueType": "string"
       },
       {
