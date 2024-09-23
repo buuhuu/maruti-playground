@@ -397,26 +397,26 @@
     "fields": [
       {
         "component": "custom-asset-namespace:custom-asset",
-        "name": "video",
+        "name": "video_link",
         "label": "Video",
         "configUrl": "https://290622-assetpickerconfig-stage.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
         "valueType": "string",
         "assetType":"video"
       },
       {
-        "component": "custom-asset-namespace:custom-video-poster-src",
-        "name": "videoPosterSrc",
+        "component": "custom-asset-namespace:custom-video-poster",
+        "name": "video_poster",
         "valueType": "string"
       },
       {
         "component": "custom-asset-namespace:custom-video-asset-name",
-        "name": "videoName",
+        "name": "video_linkName",
         "valueType": "string"
       },
       {
         "component": "multiselect",
         "valueType": "string",
-        "name": "videoTitle",
+        "name": "video_linkTitle",
         "value": "",
         "label": "Options",
         "options": [
