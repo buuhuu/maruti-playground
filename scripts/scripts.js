@@ -181,19 +181,16 @@ export function decorateDeliveryImages(main) {
 }
 
 // Function to convert the existing div structure
-export function createVideoElement(deliveryUrl) {
-  const url = new URL(deliveryUrl);
-  const videoUrl = `${url.origin}${url.pathname.split('?')[0]}`;
-  const assetName = url.searchParams.get('assetname');
-  const posterImageUrl = deliveryUrl.replace('/play', '/as/poster.jpg').split('?')[0];
+export function createVideoElement(videoUrl, posterImageUrl, assetName) {
   const videoDiv = document.createElement('div');
   const newAnchor = document.createElement('a');
   newAnchor.href = videoUrl;
   newAnchor.textContent = assetName;
-  const picture = createOptimizedPictureWithAbsoluteUrls(posterImageUrl);
-  videoDiv.appendChild(picture);
+  if (posterImageUrl) {
+    const picture = createOptimizedPictureWithAbsoluteUrls(posterImageUrl);
+    videoDiv.appendChild(picture);
+  }
   videoDiv.appendChild(newAnchor);
-
   return videoDiv;
 }
 
@@ -203,11 +200,14 @@ export function decorateDeliveryVideos(main) {
     .includes(DELIVERY_ASSET_IDENTIFIER) && anchor.href.includes(DELIVERY_VIDEO_IDENTIFIER));
   if (urls.length > 0) {
     urls.forEach((anchor) => {
-      const authorUrl = anchor.href;
+      const videoUrl = anchor.href;
       const options = anchor.title;
-      const video = createVideoElement(authorUrl);
-
       const videoMainDiv = anchor.closest('.video');
+      const posterUrlAnchor = videoMainDiv.children[1].querySelector('a');
+      const posterImageUrl = posterUrlAnchor ? posterUrlAnchor.href : '';
+      const videoNameDiv = videoMainDiv.children[2];
+      const videoName = videoNameDiv ? videoNameDiv.textContent.trim() : '';
+      const video = createVideoElement(videoUrl, posterImageUrl, videoName);
       if (videoMainDiv && options) {
         const videoOptions = options.split(',');
         videoOptions.forEach((option) => {
@@ -230,8 +230,8 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
-  decorateDeliveryImages(main);
   decorateDeliveryVideos(main);
+  decorateDeliveryImages(main);
   decorateBlocks(main);
 }
 

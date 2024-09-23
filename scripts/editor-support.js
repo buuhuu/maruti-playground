@@ -56,8 +56,8 @@ async function applyChanges(event) {
           // multi step forms
           decorateButtons(newBlock);
           decorateIcons(newBlock);
-          decorateDeliveryImages(newBlock);
           decorateDeliveryVideos(newBlock);
+          decorateDeliveryImages(newBlock);
           decorateBlock(newBlock);
           decorateRichtext(newBlock);
           element.dispatchEvent(new CustomEvent('apply-update', { detail: newBlock.outerHTML }));
@@ -67,8 +67,8 @@ async function applyChanges(event) {
         block.insertAdjacentElement('afterend', newBlock);
         decorateButtons(newBlock);
         decorateIcons(newBlock);
-        decorateDeliveryImages(newBlock);
         decorateDeliveryVideos(newBlock);
+        decorateDeliveryImages(newBlock);
         decorateBlock(newBlock);
         decorateRichtext(newBlock);
         await loadBlock(newBlock);
