@@ -482,5 +482,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "disclaimer-faq",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "faq_title",
+        "value": "",
+        "label": "Title",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "faq_titleType",
+        "value": "h2",
+        "hidden": true
+      }
+    ]
+  },
+  {
+    "id": "disclaimer-faq-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "question",
+        "value": "",
+        "label": "Question"
+      },
+      {
+        "component": "richtext",
+        "name": "answer",
+        "value": "",
+        "label": "Answer",
+        "valueType": "string"
+      }
+    ]
   }
 ]

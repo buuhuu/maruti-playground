@@ -35,8 +35,8 @@
       "image-carousel",
       "faq",
       "journey-carousel",
-      "video"
-
+      "video",
+      "disclaimer-faq"
     ]
   },
   {
@@ -70,6 +70,12 @@
     "id": "faq",
     "components": [
       "faq-item"
+    ]
+  },
+  {
+    "id": "disclaimer-faq",
+    "components": [
+      "disclaimer-faq-item"
     ]
   }
 

@@ -284,6 +284,41 @@
               }
             }
           }
+        },
+        {
+          "title": "Disclaimer FAQ",
+          "id": "disclaimer-faq",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Disclaimer FAQ",
+                  "model": "disclaimer-faq",
+                  "filter": "disclaimer-faq",
+                  "faq_title": "Disclaimer FAQ",
+                  "faq_titleType": "h2"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Disclaimer FAQ Item",
+          "id": "disclaimer-faq-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Disclaimer FAQ Item",
+                  "model": "disclaimer-faq-item",
+                  "question": "Lorem Ipsum",
+                  "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur volutpat consequat dui, sit amet"
+                }
+              }
+            }
+          }
         }
       ]
     }
