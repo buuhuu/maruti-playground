@@ -1,4 +1,4 @@
-import { moveInstrumentation } from '../../commons/scripts/scripts.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const [titleContainer, ...faqItems] = block.children;
@@ -21,5 +21,5 @@ export default function decorate(block) {
   const list = document.createElement('div');
   list.classList.add('faq-list');
   list.append(...listItems);
-  block.replaceChildren(list);
+  block.replaceChildren(titleContainer, list);
 }

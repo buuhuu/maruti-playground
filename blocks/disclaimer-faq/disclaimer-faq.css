@@ -1,59 +1,41 @@
-.section.faq-container {
+.section.disclaimer-faq-container {
     padding: 2.187rem 0.937rem;
 }
 
-.block.faq {
+.block.disclaimer-faq {
     margin-top: 1.5rem;
-    -webkit-font-smoothing: antialiased;
-    display: flex;
 }
 
-.faq-container {
+.disclaimer-faq-container {
     background: var(--secondary-gray-50);
 }
 
-.block.faq .faq-content-left {
-    flex: 1;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.block.faq .faq-content-right {
-    display: none;
-}
-
-/* Style the faq-picture div */
-.block.faq .faq-picture {
-    display: none;
-}
-
-/* Style the faq-list div */
-.block.faq .faq-list {
-    margin-right: 0.625rem;
-}
-
-.block.faq .faq-title {
+.block.disclaimer-faq .faq-title {
     margin-bottom: 1.125rem;
     text-align: left;
 }
 
-.block.faq .faq-title h2 {
-    font-size: var(--heading-font-size-m);
-    font-family: var(--heading-font-family);
-    font-weight: 300;
-    line-height: 1.75rem;
-    color: var(--primary-blue-500);
+.block.disclaimer-faq .faq-title h2 {
+    color: white;
+    background-color: #005DAA; /* Blue background similar to the screenshot */
+    padding: 20px;
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
 }
 
-.block.faq .faq-list details {
-    margin-bottom: 1rem;
-    border: 0.0625rem solid var(--secondary-gray-400);
-    box-sizing: border-box;
-    overflow: hidden;
-    word-wrap: break-word;
+/* Style the faq-list div */
+.block.disclaimer-faq .faq-list {
+    margin-right: 0.625rem;
 }
 
-.block.faq .faq-list .faq-item-label {
+.block.disclaimer-faq .faq-list details {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.block.disclaimer-faq .faq-list .faq-item-label {
     font-size: var(--body-font-size-xs);
     color: var(--secondary-gray-600);
     padding: 0.5rem 3rem 0.25rem 1.5rem;
@@ -67,11 +49,11 @@
     -webkit-font-smoothing: antialiased;
 }
 
-.block.faq .faq-list .faq-item {
+.block.disclaimer-faq .faq-list .faq-item {
     background: var(--tertiary-white);
 }
 
-.block.faq summary::after {
+.block.disclaimer-faq summary::after {
     content: "+";
     position: absolute;
     font-style: normal;
@@ -82,7 +64,7 @@
     right: 1.125rem;
 }
 
-.block.faq details[open] summary::after {
+.block.disclaimer-faq details[open] summary::after {
     content: "";
     display: inline-block;
     width: 1.2rem;
@@ -91,7 +73,7 @@
     vertical-align: middle;
 }
 
-.block.faq .faq-list .faq-item-body {
+.block.disclaimer-faq .faq-list .faq-item-body {
     word-wrap: break-word;
     padding: 0.5rem 1.875rem 0.25rem 1.5rem;
     font-size: 1rem;
@@ -103,69 +85,31 @@
     -webkit-font-smoothing: antialiased;
 }
 
-.block.faq .faq-list .faq-item:nth-child(n+5) {
-    display: none;
-}
-
-.block.faq.faq-expanded .faq-list .faq-item,
-.adobe-ue-edit .block.faq .faq-list .faq-item {
+.block.disclaimer-faq.faq-expanded .faq-list .faq-item,
+.adobe-ue-edit .block.disclaimer-faq .faq-list .faq-item {
     display: block;
 }
 
-.block.faq .view-more-faq {
-    background-color: var(--primary-blue-700);
-    border-color: var(--primary-blue-700);
-    text-decoration: none;
-    padding: 1em 1rem;
-    display: inline-block;
-    transition: 0.5s;
-    font-weight: 400;
-    font-size: 0.95rem;
-    line-height: 0.5;
-    color: var(--tertiary-white);
-    text-transform: uppercase;
-    cursor: pointer;
-}
-
-.block.faq.faq-expanded .view-more-faq {
-    display: none;
-}
-
 @media (width >= 768px) {
-    .faq-container {
+    .disclaimer-faq-container {
         background: var(--tertiary-white);
     }
 
-    .block.faq .faq-content-left {
-        width: 60%;
-    }
-
-    .block.faq .faq-content-right {
-        width: 40%;
-        display: block;
-    }
-    
-    .block.faq .faq-picture {
-        display: block;
-        margin-left: 0.8rem;
-            margin-top: 3.15rem;
-    }
-
-    .block.faq {
+    .block.disclaimer-faq {
         padding: 1rem 1rem 1rem 2.5rem;
     }
 
-    .block.faq .faq-title {
+    .block.disclaimer-faq .faq-title {
         margin-bottom: 2rem;
     }
 
-    .section.faq-container {
+    .section.disclaimer-faq-container {
         padding: 2.187rem 0;
     }
 }
 
 @media (width >= 900px) {
-    .section.faq-container {
+    .section.disclaimer-faq-container {
         max-width: 1200px;
         margin: auto;
     }
