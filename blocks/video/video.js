@@ -1,9 +1,8 @@
 import { decorateIcons, loadScript, loadCSS } from '../../scripts/aem.js';
 
-const VIDEO_JS_SCRIPT = 'https://vjs.zencdn.net/8.3.0/video.min.js';
-const VIDEO_JS_CSS = 'https://vjs.zencdn.net/8.3.0/video-js.min.css';
-const SCRIPT_LOAD_DELAY = 3000;
-let videoJsScriptPromise;
+const VIDEO_JS_SCRIPT = '/blocks/video/videojs/video.min.js';
+const VIDEO_JS_CSS = '/blocks/video/videojs/video-js.min.css';
+const VIDEO_JS_LOAD_EVENT = 'videojs-loaded';
 
 function getDeviceSpecificVideoUrl(videoUrl) {
   const { userAgent } = navigator;
@@ -16,6 +15,7 @@ function getDeviceSpecificVideoUrl(videoUrl) {
 
 function parseConfig(block) {
   const isAutoPlay = block.classList.contains('autoplay');
+
   if (block.classList.contains('hero')) {
     const posterImage = block.querySelector('picture');
     const videoUrl = block.querySelector('div > div:first-child a').href;
@@ -36,7 +36,7 @@ function parseConfig(block) {
 
   if (block.classList.contains('inline')) {
     const cards = [...block.children].map((child) => {
-      const posterImage = child.querySelector(' picture');
+      const posterImage = child.querySelector('picture');
       const videoUrl = child.querySelector('div:first-child a').href;
       const title = child.querySelector('h1, h2, h3')?.textContent;
       const description = child.querySelector('div:nth-child(2) > p')?.textContent;
@@ -66,18 +66,47 @@ function parseConfig(block) {
   };
 }
 
+function getVideojsScripts() {
+  return {
+    scriptTag: document.querySelector(`head > script[src="${VIDEO_JS_SCRIPT}"]`),
+    cssLink: document.querySelector(`head > link[href="${VIDEO_JS_CSS}"]`),
+  };
+}
+
+async function waitForVideoJs() {
+  return new Promise((resolve) => {
+    const { scriptTag, cssLink } = getVideojsScripts();
+    const isJsLoaded = scriptTag && scriptTag.dataset.loaded;
+    const isCSSLoaded = cssLink && cssLink.dataset.loaded;
+    if (isJsLoaded && isCSSLoaded) {
+      resolve();
+    }
+
+    const successHandler = () => {
+      document.removeEventListener(VIDEO_JS_LOAD_EVENT, successHandler);
+      resolve();
+    };
+
+    document.addEventListener(VIDEO_JS_LOAD_EVENT, successHandler);
+  });
+}
+
 async function loadVideoJs() {
-  if (videoJsScriptPromise) {
-    await videoJsScriptPromise;
+  const { scriptTag, cssLink } = getVideojsScripts();
+  if (scriptTag && cssLink) {
+    await waitForVideoJs();
     return;
   }
 
-  videoJsScriptPromise = Promise.all([
+  await Promise.all([
     loadCSS(VIDEO_JS_CSS),
     loadScript(VIDEO_JS_SCRIPT),
   ]);
 
-  await videoJsScriptPromise;
+  const { scriptTag: jsScript, cssLink: css } = getVideojsScripts();
+  jsScript.dataset.loaded = true;
+  css.dataset.loaded = true;
+  document.dispatchEvent(new Event(VIDEO_JS_LOAD_EVENT));
 }
 
 function createPlayButton(container, player) {
@@ -217,28 +246,18 @@ function setupPlayer(url, videoContainer, config) {
 }
 
 async function decorateVideoPlayer(url, videoContainer, config) {
-  async function loadPlayer() {
-    await loadVideoJs();
-
-    const posterImage = videoContainer.querySelector('picture');
-    const player = setupPlayer(url, videoContainer, config);
-    player.on('loadeddata', () => {
-      if (posterImage) {
-        posterImage.style.display = 'none';
-      }
-    });
-  }
-
   if (config.posterImage) {
     videoContainer.append(config.posterImage);
-
-    // Defer loading video.js to avoid blocking the main thread
-    setTimeout(async () => {
-      await loadPlayer();
-    }, SCRIPT_LOAD_DELAY);
-  } else {
-    await loadPlayer();
   }
+
+  await waitForVideoJs();
+  const player = setupPlayer(url, videoContainer, config);
+  player.on('loadeddata', () => {
+    const posterImage = videoContainer.querySelector('picture');
+    if (posterImage) {
+      posterImage.style.display = 'none';
+    }
+  });
 }
 
 async function decorateVideoCard(container, config) {
@@ -272,7 +291,7 @@ async function decorateVideoCard(container, config) {
 
   container.append(article);
 
-  await decorateVideoPlayer(config.videoUrl, videoContainer, {
+  decorateVideoPlayer(config.videoUrl, videoContainer, {
     autoplay: config.isAutoPlay,
     hasCustomPlayButton: true,
     fill: true,
@@ -311,7 +330,7 @@ async function decorateHeroBlock(block, config) {
   block.innerHTML = '';
   block.append(container);
 
-  await decorateVideoPlayer(config.videoUrl, container, {
+  decorateVideoPlayer(config.videoUrl, container, {
     autoplay: config.isAutoPlay,
     hasCustomPlayButton: true,
     fill: true,
@@ -451,6 +470,16 @@ async function decorateVideoModal(block, config) {
 }
 
 export default async function decorate(block) {
+  if (window.DELAYED_PHASE) {
+    loadVideoJs();
+  } else {
+    const delayedPhaseHandler = async () => {
+      document.removeEventListener('delayed-phase', delayedPhaseHandler);
+      await loadVideoJs();
+    };
+    document.addEventListener('delayed-phase', delayedPhaseHandler);
+  }
+
   const config = parseConfig(block);
 
   if (config.type === 'hero') {
