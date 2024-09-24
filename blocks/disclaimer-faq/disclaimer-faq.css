@@ -23,6 +23,14 @@
     margin-right: 0.625rem;
 }
 
+.block.disclaimer-faq .faq-description {
+    word-wrap: break-word;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--tertiary-black);
+    font-family: var(--heading-font-family);
+}
+
 .block.disclaimer-faq .faq-list .faq-item-label {
     font-size: var(--body-font-size-xs);
     color: var(--tertiary-black);
@@ -64,7 +72,6 @@
     font-size: 0.9rem;
     line-height: 1.4;
     color: var(--tertiary-black);
-    font-weight: 300;
     font-family: var(--heading-font-family);
     overflow: hidden;
     max-height: 0;
@@ -79,11 +86,6 @@
 .block.disclaimer-faq details[open] .faq-item-body {
     max-height: 200px;
     transition: max-height 0.5s ease-in;
-}
-
-.block.disclaimer-faq.faq-expanded .faq-list .faq-item,
-.adobe-ue-edit .block.disclaimer-faq .faq-list .faq-item {
-    display: block;
 }
 
 @media (width >= 768px) {
