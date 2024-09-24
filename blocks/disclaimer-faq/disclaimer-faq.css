@@ -6,51 +6,37 @@
     margin-top: 1.5rem;
 }
 
-.disclaimer-faq-container {
-    background: var(--secondary-gray-50);
-}
-
-.block.disclaimer-faq .faq-title {
-    margin-bottom: 1.125rem;
-    text-align: left;
-}
-
 .block.disclaimer-faq .faq-title h2 {
     color: white;
-    background-color: #005DAA; /* Blue background similar to the screenshot */
+    background-color: var(--primary-blue-350);
     padding: 20px;
     margin: 0;
-    font-size: 24px;
+    font-size: 20px;
     text-align: center;
+    right: 10px;
+    top: 10px;
+    opacity: 1;
+    font-weight: normal;
 }
 
-/* Style the faq-list div */
 .block.disclaimer-faq .faq-list {
     margin-right: 0.625rem;
 }
 
-.block.disclaimer-faq .faq-list details {
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #f9f9f9;
-}
-
 .block.disclaimer-faq .faq-list .faq-item-label {
     font-size: var(--body-font-size-xs);
-    color: var(--secondary-gray-600);
-    padding: 0.5rem 3rem 0.25rem 1.5rem;
-    font-weight: 300;
+    color: var(--tertiary-black);
+    font-weight: bold;
     position: relative;
     display: block;
     cursor: pointer;
-    border-bottom: 0.625rem;
     line-height: 1.4;
     font-family: var(--heading-font-family);
-    -webkit-font-smoothing: antialiased;
 }
 
 .block.disclaimer-faq .faq-list .faq-item {
     background: var(--tertiary-white);
+    border-bottom: var(--tertiary-black) solid 1px;
 }
 
 .block.disclaimer-faq summary::after {
@@ -59,9 +45,9 @@
     font-style: normal;
     top: 50%;
     transform: translateY(-50%);
-    font-weight: 100;
     font-size: var(--heading-font-size-l);
     right: 1.125rem;
+    font-weight: 300;
 }
 
 .block.disclaimer-faq details[open] summary::after {
@@ -75,14 +61,24 @@
 
 .block.disclaimer-faq .faq-list .faq-item-body {
     word-wrap: break-word;
-    padding: 0.5rem 1.875rem 0.25rem 1.5rem;
-    font-size: 1rem;
-    border-top: var(--secondary-gray-400) solid 1px;
+    font-size: 0.9rem;
     line-height: 1.4;
     color: var(--tertiary-black);
     font-weight: 300;
     font-family: var(--heading-font-family);
-    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease-out;
+}
+
+.block.disclaimer-faq details .faq-item-body p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+.block.disclaimer-faq details[open] .faq-item-body {
+    max-height: 200px;
+    transition: max-height 0.5s ease-in;
 }
 
 .block.disclaimer-faq.faq-expanded .faq-list .faq-item,
@@ -101,10 +97,6 @@
 
     .block.disclaimer-faq .faq-title {
         margin-bottom: 2rem;
-    }
-
-    .section.disclaimer-faq-container {
-        padding: 2.187rem 0;
     }
 }
 

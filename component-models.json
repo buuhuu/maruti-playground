@@ -499,6 +499,13 @@
         "name": "faq_titleType",
         "value": "h2",
         "hidden": true
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
       }
     ]
   },

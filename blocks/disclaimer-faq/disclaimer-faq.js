@@ -13,7 +13,6 @@ export default function decorate(block) {
     const details = document.createElement('details');
     details.append(summary, body);
     details.classList.add('faq-item');
-    details.open = index === 0;
     moveInstrumentation(item, details);
     item.remove();
     return details;
