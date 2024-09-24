@@ -88,8 +88,8 @@ async function applyChanges(event) {
           decorateButtons(newSection);
           decorateIcons(newSection);
           buildAutoBlocks(parentElement);
-          decorateDeliveryVideos(newBlock);
-          decorateDeliveryImages(newBlock);
+          decorateDeliveryVideos(newSection);
+          decorateDeliveryImages(newSection);
           decorateRichtext(newSection);
           decorateSections(parentElement);
           decorateBlocks(parentElement);
