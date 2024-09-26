@@ -10,7 +10,7 @@ function getDeviceSpecificVideoUrl(videoUrl) {
   const isSafari = (/Safari/i).test(userAgent) && !(/Chrome/i).test(userAgent) && !(/CriOs/i).test(userAgent) && !(/Android/i).test(userAgent) && !(/Edg/i).test(userAgent);
 
   const manifest = (isIOS || isSafari) ? 'manifest.m3u8' : 'manifest.mpd';
-  return videoUrl.replace(/manifest\.mpd|manifest\.m3u8|play/, manifest);
+  return videoUrl?.replace(/manifest\.mpd|manifest\.m3u8|play/, manifest);
 }
 
 function parseConfig(block) {
