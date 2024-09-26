@@ -5,3 +5,5 @@ import { sampleRUM } from './aem.js';
 sampleRUM('cwv');
 
 // add more delayed functionality here
+document.dispatchEvent(new Event('delayed-phase'));
+Window.DELAYED_PHASE = true;
