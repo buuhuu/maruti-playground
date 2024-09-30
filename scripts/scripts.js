@@ -155,6 +155,8 @@ function createOptimizedPictureWithAbsoluteUrls(
       img.setAttribute('loading', eager ? 'eager' : 'lazy');
       img.setAttribute('alt', alt);
       img.setAttribute('src', fallbackUrl.href);
+      img.setAttribute('width', '100%');
+      img.setAttribute('height', '100%');
       picture.appendChild(img);
     }
   });
