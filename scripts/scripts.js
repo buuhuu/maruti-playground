@@ -114,27 +114,31 @@ export function buildAutoBlocks(main) {
  * @param {Array} [breakpoints] Breakpoints and corresponding params (eg. width)
  * @returns {Element} The picture element
  */
-function createOptimizedPictureWithAbsoluteUrls(
+function createOptimizedPictureWithDeliveryUrls(
   src,
   alt = '',
   eager = false,
   breakpoints = [{ media: '(min-width: 600px)', width: '2000' }, { width: '750' }],
 ) {
   const url = new URL(src, window.location.href);
+  const width = url.searchParams.get('width');
+  const height = url.searchParams.get('height');
   const picture = document.createElement('picture');
-  const ext = url.pathname.substring(url.pathname.lastIndexOf('.') + 1);
-
   // webp
   breakpoints.forEach((br) => {
     const source = document.createElement('source');
     const webpUrl = new URL(url.href); // Clone original URL
     webpUrl.searchParams.set('width', br.width);
-    webpUrl.searchParams.set('format', 'webp');
-    webpUrl.searchParams.set('optimize', 'medium');
-
+    webpUrl.searchParams.set('preferwebp', 'true');
     if (br.media) source.setAttribute('media', br.media);
     source.setAttribute('type', 'image/webp');
     source.setAttribute('srcset', webpUrl.href);
+    if (height) {
+      source.setAttribute('height', height);
+    }
+    if (width) {
+      source.setAttribute('width', width);
+    }
     picture.appendChild(source);
   });
 
@@ -142,21 +146,29 @@ function createOptimizedPictureWithAbsoluteUrls(
   breakpoints.forEach((br, i) => {
     const fallbackUrl = new URL(url.href); // Clone original URL
     fallbackUrl.searchParams.set('width', br.width);
-    fallbackUrl.searchParams.set('format', ext);
-    fallbackUrl.searchParams.set('optimize', 'medium');
 
     if (i < breakpoints.length - 1) {
       const source = document.createElement('source');
       if (br.media) source.setAttribute('media', br.media);
       source.setAttribute('srcset', fallbackUrl.href);
+      if (height) {
+        source.setAttribute('height', height);
+      }
+      if (width) {
+        source.setAttribute('width', width);
+      }
       picture.appendChild(source);
     } else {
       const img = document.createElement('img');
       img.setAttribute('loading', eager ? 'eager' : 'lazy');
       img.setAttribute('alt', alt);
       img.setAttribute('src', fallbackUrl.href);
-      img.setAttribute('width', '100%');
-      img.setAttribute('height', '100%');
+      if (height) {
+        img.setAttribute('height', height);
+      }
+      if (width) {
+        img.setAttribute('width', width);
+      }
       picture.appendChild(img);
     }
   });
@@ -176,7 +188,7 @@ export function decorateDeliveryImages(main) {
     deliveryUrls.forEach((anchor) => {
       const deliveryUrl = anchor.href;
       const altText = anchor.title;
-      const picture = createOptimizedPictureWithAbsoluteUrls(deliveryUrl, altText);
+      const picture = createOptimizedPictureWithDeliveryUrls(deliveryUrl, altText);
       anchor.replaceWith(picture);
     });
   }
@@ -189,7 +201,7 @@ export function createVideoElement(videoUrl, posterImageUrl, assetName) {
   newAnchor.href = videoUrl;
   newAnchor.textContent = assetName;
   if (posterImageUrl) {
-    const picture = createOptimizedPictureWithAbsoluteUrls(posterImageUrl);
+    const picture = createOptimizedPictureWithDeliveryUrls(posterImageUrl);
     videoDiv.appendChild(picture);
   }
   videoDiv.appendChild(newAnchor);
@@ -212,7 +224,10 @@ export function decorateDeliveryVideos(main) {
       if (videoMainDiv && options) {
         const videoOptions = options.split(',');
         videoOptions.forEach((option) => {
-          videoMainDiv.classList.add(option.trim());
+          const trimmedOption = option.trim();
+          if (trimmedOption !== videoName) {
+            videoMainDiv.classList.add(trimmedOption);
+          }
         });
       }
       anchor.parentElement.replaceWith(video);
