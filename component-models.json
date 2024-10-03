@@ -68,19 +68,21 @@
     "fields": [
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpicker/tools/assets-selector/image.config.json",
+        "configUrl": "https://290622-assetpickerconfig-stage.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
         "valueType": "string",
         "name": "image_desktop",
         "label": "Image Desktop",
-        "multi": false
+        "multi": false,
+        "assetType": "image"
       },
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpicker/tools/assets-selector/image.config.json",
+        "configUrl": "https://290622-assetpickerconfig-stage.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
         "valueType": "string",
         "name": "image_mobile",
         "label": "Image (mobile)",
-        "multi": false
+        "multi": false,
+        "assetType": "image"
       },
       {
         "component": "text",
@@ -394,16 +396,27 @@
     "id": "video",
     "fields": [
       {
+        "component": "custom-asset-namespace:custom-video-poster",
+        "name": "video_poster",
+        "valueType": "string"
+      },
+      {
         "component": "custom-asset-namespace:custom-asset",
-        "name": "video",
+        "name": "video_link",
         "label": "Video",
-        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpicker/tools/assets-selector/videos.config.json",
+        "configUrl": "https://290622-assetpickerconfig-stage.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
+        "valueType": "string",
+        "assetType":"video"
+      }, 
+      {
+        "component": "custom-asset-namespace:custom-video-asset-name",
+        "name": "video_linkText",
         "valueType": "string"
       },
       {
         "component": "multiselect",
         "valueType": "string",
-        "name": "videoTitle",
+        "name": "video_linkTitle",
         "value": "",
         "label": "Options",
         "options": [
