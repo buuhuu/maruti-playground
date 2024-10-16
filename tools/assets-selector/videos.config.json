@@ -1,9 +1,7 @@
 {
     "aemTierType": [
-        "delivery"
-    ],
-    "repoNames": [
-        "delivery-p130360-e1403848.adobeaemcloud.com"
+         "delivery",
+        "author"
     ],
     "videoResponseType": "html",
     "filterSchema": [
