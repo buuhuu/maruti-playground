@@ -302,7 +302,7 @@
     "fields": [
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpicker/tools/assets-selector/image.config.json",
+        "configUrl": "https://dmassetpickervideo--maruti-playground--buuhuu.hlx.page/tools/assets-selector/image.config.json",
         "valueType": "string",
         "name": "common_background-image",
         "label": "Background Image",
@@ -311,7 +311,7 @@
       },
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpicker/tools/assets-selector/image.config.json",
+        "configUrl": "https://dmassetpickervideo--maruti-playground--buuhuu.hlx.page/tools/assets-selector/image.config.json",
         "valueType": "string",
         "name": "common_image",
         "label": "Image",
@@ -354,7 +354,7 @@
     "fields": [
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpicker/tools/assets-selector/image.config.json",
+        "configUrl": "https://dmassetpickervideo--maruti-playground--buuhuu.hlx.page/tools/assets-selector/image.config.json",
         "valueType": "string",
         "name": "image",
         "label": "Image",
@@ -404,7 +404,7 @@
         "component": "custom-asset-namespace:custom-asset",
         "name": "video_link",
         "label": "Video",
-        "configUrl": "https://github.com/buuhuu/maruti-playground/blob/dmassetpicker/tools/assets-selector/image.config.json",
+        "configUrl": "https://dmassetpickervideo--maruti-playground--buuhuu.hlx.page/tools/assets-selector/videos.config.json",
         "valueType": "string",
         "assetType":"video"
       }, 
