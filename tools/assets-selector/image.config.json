@@ -6,6 +6,7 @@
     "repoNames": [
         "delivery-p130360-e1403848.adobeaemcloud.com"
     ],
+    "videoResponseType": "manifest",
     "filterSchema": [
         {
             "fields": [
