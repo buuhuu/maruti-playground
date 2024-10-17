@@ -1,10 +1,6 @@
 {
-    "aemTierType": [
-        "delivery",
-        "author"
-    ],
     "repoNames": [
-        "delivery-p130360-e1403848.adobeaemcloud.com"
+        "delivery-p135331-e1341966.adobeaemcloud.com"
     ],
     "customAssetsDomain" : "assets-dev.com",
     "videoResponseType": "manifest"
