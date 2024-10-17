@@ -6,27 +6,5 @@
     "repoNames": [
         "delivery-p130360-e1403848.adobeaemcloud.com"
     ],
-    "videoResponseType": "manifest",
-    "filterSchema": [
-        {
-            "fields": [
-                {
-                    "element": "checkbox",
-                    "name": "type",
-                    "defaultValue": [
-                        "image/*"
-                    ],
-                    "options": [
-                        {
-                            "label": "Image",
-                            "value": "image/*",
-                            "readOnly": true
-                        }
-                    ]
-                }
-            ],
-            "header": "File Type",
-            "groupKey": "FileTypeGroup"
-        }
-    ]
+    "videoResponseType": "manifest"
 }
