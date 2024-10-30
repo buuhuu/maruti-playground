@@ -247,7 +247,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateDeliveryVideos(main);
-  decorateDeliveryImages(main);
+ // decorateDeliveryImages(main);
   decorateBlocks(main);
 }
 
