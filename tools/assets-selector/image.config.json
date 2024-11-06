@@ -1,10 +1,14 @@
 {
-    "aemTierType": [
-        "delivery"
-    ],
+  
     "repoNames": [
         "delivery-p130360-e1403848.adobeaemcloud.com"
     ],
+    "preferredDimensions":{
+        "minWidth": 500,
+        "maxWidth": 2000, 
+        "minHeight": 500,
+        "maxHeight": 2000
+    },
     "filterSchema": [
         {
             "fields": [
