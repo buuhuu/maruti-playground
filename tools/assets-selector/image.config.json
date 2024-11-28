@@ -7,7 +7,7 @@
     },
     "videoResponseType": "manifest",
     "expiryOptions": {
-        "allowSelectionAndDrag": false,
+        "allowSelectionAndDrag": "false",
         "expiryPropertyName": "expiryStatus",
         "expiryNowDays": 3
     }
