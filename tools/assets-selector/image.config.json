@@ -2,6 +2,13 @@
     "repoNames": [
         "delivery-p135331-e1341966.adobeaemcloud.com"
     ],
-   "assetDomainMapping":{ "delivery-p135331-e1341966.adobeaemcloud.com" : "assets-dev-arena.marutisuzuki.com/"},
-    "videoResponseType": "manifest"
+    "assetDomainMapping": {
+        "delivery-p135331-e1341966.adobeaemcloud.com": "assets-dev-arena.marutisuzuki.com/"
+    },
+    "videoResponseType": "manifest",
+    "expiryProperties": {
+        "selectionAllowed": "false",
+        "expiryPropertName": "expiryStatus",
+        "expiryNowDays": "5"
+    }
 }
