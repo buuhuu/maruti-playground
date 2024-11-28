@@ -9,6 +9,6 @@
     "expiryOptions": {
         "allowSelectionAndDrag": false,
         "expiryPropertyName": "expiryStatus",
-        "expiryNowDays": 3
+        "expiryNowDays": 60
     }
 }
