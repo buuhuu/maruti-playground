@@ -6,9 +6,9 @@
         "delivery-p135331-e1341966.adobeaemcloud.com": "assets-dev-arena.marutisuzuki.com/"
     },
     "videoResponseType": "manifest",
-    "expiryProperties": {
-        "selectionAllowed": "false",
-        "expiryPropertName": "expiryStatus",
+    "expiryOptions": {
+        "allowSelectionAndDrag": "false",
+        "expiryPropertyName": "expiryStatus",
         "expiryNowDays": "5"
     }
 }
