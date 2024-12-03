@@ -6,7 +6,4 @@
         "delivery-p135331-e1341966.adobeaemcloud.com": "assets-dev-arena.marutisuzuki.com/"
     },
     "videoResponseType": "manifest",
-    "expiryOptions": {
-        "allowSelectionAndDrag": true
-    }
 }
