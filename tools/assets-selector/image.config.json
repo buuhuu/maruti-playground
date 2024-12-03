@@ -7,8 +7,6 @@
     },
     "videoResponseType": "manifest",
     "expiryOptions": {
-        "allowSelectionAndDrag": false,
-        "expiryPropertyName": "xmp:expiryNew",
-        "expiryNowDays": 60
+        "allowSelectionAndDrag": false
     }
 }
