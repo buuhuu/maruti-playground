@@ -7,6 +7,6 @@
     },
     "videoResponseType": "manifest",
     "expiryOptions": {
-        "allowSelectionAndDrag": false
+        "allowSelectionAndDrag": true
     }
 }
