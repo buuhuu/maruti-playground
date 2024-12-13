@@ -43,6 +43,6 @@
   "repositories": ["delivery-p66302-e574366.adobeaemcloud.com"],
   "rootPath": "/content/dam",
   "expiryOptions": {
-        "allowSelectionAndDrag": true
+        "allowSelectionAndDrag": false
     }
 }
